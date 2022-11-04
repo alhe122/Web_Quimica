@@ -46,6 +46,46 @@
   }
 }
 
+.btn-primary2,
+.btn-dark2 {
+  border: 0;
+  border-radius: 3px;
+  padding: 12px 20px 10px;
+  font-weight: 700;
+  text-transform: none;
+  color: #fff;
+  font-family: $font-secondary;
+  transition: 350ms;
+  font-size: 14px;
+  @include tablet {
+      font-size: 13px;
+  }
+}
+
+.btn-white2.btn-primary2 {
+  background: #fff;
+  color: #ffb600;
+}
+
+.btn-primary2 {
+  background: #ffb600;
+}
+
+.btn-dark2 {
+  background: #23282d;
+}
+
+.btn-primary2:hover,
+.btn-dark2:hover,
+.btn-white2.btn-primary2:hover {
+  background: #111;
+  color: #fff;
+  &:active,
+  &:focus {
+      color: #fff;
+      background-color: #111 !important;
+  }
+}
 .general-btn {
   margin-top: 50px;
 }

@@ -496,6 +496,10 @@ a[href^=tel] {
   text-decoration: none;
 }
 
+.lihead{
+  display: flex;
+  padding: 0%;
+}
 /* Button */
 .btn:active, .btn:focus {
   box-shadow: none !important;
@@ -548,6 +552,53 @@ a[href^=tel] {
   background-color: #111 !important;
 }
 
+.btn-primary2,
+.btn-dark2 {
+  border: 0;
+  border-radius: 0px;
+  padding: 3px 3px 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  transition: 350ms;
+  font-size: 10px;
+}
+@media (max-width: 767px) {
+  .btn-primary2,
+.btn-dark2 {
+    font-size: 13px;
+  }
+}
+
+.btn-white2.btn-primary2 {
+  background: #fff;
+  color: #ffb600;
+}
+
+.btn-primary2 {
+  background: #ffb600;
+}
+
+.btn-dark2 {
+  background: #23282d;
+}
+
+.btn-primary2:hover,
+.btn-dark2:hover,
+.btn-white2.btn-primary2:hover {
+  background: #111;
+  color: #fff;
+}
+.btn-primary2:hover:active, .btn-primary2:hover:focus,
+.btn-dark2:hover:active,
+.btn-dark2:hover:focus,
+.btn-white2.btn-primary2:hover:active,
+.btn-white2.btn-primary2:hover:focus {
+  color: #fff;
+  background-color: #111 !important;
+}
+
 .general-btn {
   margin-top: 50px;
 }
@@ -578,7 +629,7 @@ a[href^=tel] {
 /* Top Bar
 ================================================== */
 .top-bar {
-  padding: 8px 0;
+  padding: 0px 0;
   background: #ebebeb;
   position: relative;
 }
@@ -595,7 +646,7 @@ ul.top-info li {
   line-height: 10px;
   display: inline-block;
   margin-left: 0;
-  padding-right: 15px;
+  padding-right: 0px;
 }
 
 ul.top-info li i {
