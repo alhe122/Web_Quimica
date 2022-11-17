@@ -115,6 +115,17 @@ body {
   z-index: 99999;
 }
 
+.topinfoText{
+  color: inherit;
+  transition: 0.2s ease;
+}
+.topinfoText:hover {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transform: scale(4);
+  font-size: 18px;
+}
+
 a:link,
 a:visited {
   text-decoration: none;
