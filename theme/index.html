@@ -38,7 +38,7 @@ FACEBOOK: https://www.facebook.com/themefisher
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="image/png" href="images/logo-sm.png">
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='images/logo-sm.png')}}">
 
   <!-- CSS
 ================================================== -->
@@ -127,7 +127,7 @@ FACEBOOK: https://www.facebook.com/themefisher
       <div class="logo-area">
           <div class="row align-items-center">
             <div class="logo col-lg-3 text-center text-lg-left mb-0 mb-md-0 mb-lg-0">
-                <a class="d-block" href="index.html">
+                <a class="d-block" href="/index.html">
                   
                   <img loading="lazy" src="{{url_for('static', filename='images/d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png')}}" alt="Banner">
                 </a>
@@ -1060,25 +1060,26 @@ FACEBOOK: https://www.facebook.com/themefisher
   ================================================== -->
 
   <!-- initialize jQuery Library -->
-  <script src="plugins/jQuery/jquery.min.js"></script>
+  
+  <script src="{{url_for('static', filename='plugins/jQuery/jquery.min.js')}}"></script>
   <!-- Bootstrap jQuery -->
-  <script src="plugins/bootstrap/bootstrap.min.js" defer></script>
+  <script src="{{url_for('static', filename='plugins/bootstrap/bootstrap.min.js')}}" defer></script>
   <!-- Slick Carousel -->
-  <script src="plugins/slick/slick.min.js"></script>
-  <script src="plugins/slick/slick-animation.min.js"></script>
+  <script src="{{url_for('static', filename='plugins/slick/slick.min.js')}}"></script>
+  <script src="{{url_for('static', filename='plugins/slick/slick-animation.min.js')}}"></script>
   <!-- Color box -->
-  <script src="plugins/colorbox/jquery.colorbox.js"></script>
+  <script src="{{url_for('static', filename='plugins/colorbox/jquery.colorbox.js')}}"></script>
   <!-- shuffle -->
-  <script src="plugins/shuffle/shuffle.min.js" defer></script>
+  <script src="{{url_for('static', filename='plugins/shuffle/shuffle.min.js')}}" defer></script>
 
 
   <!-- Google Map API Key-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
   <!-- Google Map Plugin-->
-  <script src="plugins/google-map/map.js" defer></script>
+  <script src="{{url_for('static', filename='plugins/google-map/map.js')}}" defer></script>
 
   <!-- Template custom -->
-  <script src="js/script.js"></script>
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
 
   </div><!-- Body inner end -->
   </body>
