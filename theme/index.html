@@ -90,27 +90,14 @@ FACEBOOK: https://www.facebook.com/themefisher
               <!--/ Top info end -->
   
               <div class="col-lg-1 col-md-1 top-social text-center text-md-right">
-                <ul class="lihead">
-                    <li>
-                      <a title="Facebook" href="https://facebook.com">
-                          <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a title="Twitter" href="https://twitter.com">
-                          <span class="social-icon"><i class="fab fa-twitter"></i></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a title="Instagram" href="https://instagram.com">
-                          <span class="social-icon"><i class="fab fa-instagram"></i></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a title="Linkdin" href="https://github.com">
-                          <span class="social-icon"><i class="fab fa-github"></i></span>
-                      </a>
-                    </li>
+                <ul class="lihead text-right">
+                  {%for redes in redes_sociales%}
+                  <li>
+                    <a title="{{redes[1]}}" href="{{redes[2]}}">
+                        <span class="social-icon"><i class="fab fa-{{redes[3]}}"></i></span>
+                    </a>
+                  </li>
+                  {% endfor %}
                 </ul>
               </div>
               <!--/ Top social end -->
@@ -127,7 +114,7 @@ FACEBOOK: https://www.facebook.com/themefisher
       <div class="logo-area">
           <div class="row align-items-center">
             <div class="logo col-lg-3 text-center text-lg-left mb-0 mb-md-0 mb-lg-0">
-                <a class="d-block" href="/index.html">
+                <a class="d-block" href="/">
                   
                   <img loading="lazy" src="{{url_for('static', filename='images/d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png')}}" alt="Banner">
                 </a>
@@ -136,7 +123,7 @@ FACEBOOK: https://www.facebook.com/themefisher
             <div class="col-lg-9 header-right">
                 <ul class="top-info-box">
                   <li>
-                    <a class="topinfoText" href="faq.html">INICIO</a>
+                    <a class="topinfoText" href="/">INICIO</a>
                   </li>
                   <li>
                     <a class="topinfoText" href="faq.html">TRÁMITES</a>
@@ -167,10 +154,10 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                     
                   <ul class="nav navbar-nav mr-auto">
-                      <li class="nav-item dropdown active">
+                      <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu animated fadeInDown" role="menu">
-                            <li><a class="animated fadeInDown" href="presentacion.html">Presentación</a></li>
+                            <li><a class="animated fadeInDown" href="presentacion">Presentación</a></li>
                             <li><a class="animated fadeInDown" href="index-2.html">Misión y Visión</a></li>
                             <li><a class="animated fadeInDown" href="index-2.html">Objetivos</a></li>
                             <li><a class="animated fadeInDown" href="index-2.html">Organización</a></li>
@@ -999,18 +986,23 @@ FACEBOOK: https://www.facebook.com/themefisher
         <div class="row justify-content-between">
           <div class="col-lg-4 col-md-6 footer-widget footer-about">
             <h3 class="widget-title">CONTÁCTENOS</h3>
-            <p>Dirección: Av. Miraflores S/N, Ciudad Universitaria</p>
-            <p>Teléfono: (052)583000 anexo 2005</p>
-            <p>Correo: esiq@unjnbg.edu.pe</p>
+            {% if datos_generales[4] != "" %}
+              <p>Dirección: {{datos_generales[4]}}</p>
+            {% endif %}
+            {% if datos_generales[2] != "" %}
+              <p>Teléfono: {{datos_generales[2]}}</p>
+            {% endif %}
+            {% if datos_generales[3] != "" %}
+              <p>Celular: {{datos_generales[3]}}</p>
+            {% endif %}
+            {% if datos_generales[1] != "" %}
+              <p>Correo: {{datos_generales[1]}}</p>
+            {% endif %}
             <div class="footer-social">
               <ul>
-                <li><a href="https://facebook.com/themefisher" aria-label="Facebook"><i
-                      class="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://twitter.com/themefisher" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li><a href="https://instagram.com/themefisher" aria-label="Instagram"><i
-                      class="fab fa-instagram"></i></a></li>
-                <li><a href="https://github.com/themefisher" aria-label="Github"><i class="fab fa-github"></i></a></li>
+                {%for redes in redes_sociales%}
+                <li><a href="{{redes[2]}}" aria-label="{{redes[1]}}"><i class="fab fa-{{redes[3]}}"></i></a></li>
+                {% endfor %}
               </ul>
             </div><!-- Footer social end -->
           </div><!-- Col end -->
