@@ -570,7 +570,7 @@ a[href^=tel] {
   padding: 3px 3px 3px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #fff;
+  color: rgb(255, 255, 255);
   font-family: "Montserrat", sans-serif;
   transition: 350ms;
   font-size: 10px;
@@ -641,7 +641,7 @@ a[href^=tel] {
 ================================================== */
 .top-bar {
   padding: 0px 0;
-  background: #ebebeb;
+  background: #ffb600;
   position: relative;
 }
 
