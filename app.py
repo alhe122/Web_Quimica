@@ -43,11 +43,35 @@ def presentacion():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_presentacion`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    presentacion=cursor.fetchall()
 
     conn.commit()
     print(datos_generales)
     
-    return render_template('presentacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
+    return render_template('presentacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion[1:],titulo=presentacion[0])
+
+@app.route('/mision_vision')
+def misionvision():
+
+    sql="SELECT * FROM `datoscontacto` WHERE `id` = 1"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    datos_generales=cursor.fetchall()
+    sql="SELECT * FROM `redes_sociales`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    redes_sociales=cursor.fetchall()
+
+    conn.commit()
+    print(datos_generales)
+    
+    return render_template('mision_vision.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
 
 if __name__=='__main__':
     app.run(debug=True)
