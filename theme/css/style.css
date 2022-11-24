@@ -3400,7 +3400,12 @@ label {
   color: #fff;
   border: 1px solid transparent;
 }
-
+.imagenhover{
+  transition: 0.2s ease; 
+}
+.imagenhover:hover{
+  filter: brightness(90%);
+}
 .mision_vision{
   position: relative;
   top: 10%; left: 32%; right: 50%;
@@ -3410,11 +3415,12 @@ label {
   border-radius: 50%;
   display: inline-block;
   transition: 0.2s ease;
+  color: #ffb600;
 }
 
 .mision_vision:hover {
   text-decoration: none;
-  color: #ffb600;
+  color: #b48100;
 }
 /* Error page
 ================================================== */

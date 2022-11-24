@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2022 a las 18:00:01
+-- Tiempo de generación: 24-11-2022 a las 18:03:40
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -42,6 +42,25 @@ CREATE TABLE `datoscontacto` (
 
 INSERT INTO `datoscontacto` (`id`, `correo`, `telefono`, `cel`, `direccion`, `facebook`) VALUES
 (1, 'esiq@unjbg.edu.pe', '(052)583000', '', 'Av. Miraflores S/N, Ciudad Universitaria', 'https://es-la.facebook.com/ESIQUNJBG/');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_misionvision`
+--
+
+CREATE TABLE `datos_misionvision` (
+  `id` int(11) NOT NULL,
+  `mision_vision` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_misionvision`
+--
+
+INSERT INTO `datos_misionvision` (`id`, `mision_vision`) VALUES
+(1, '“Brindar formación profesional humanista, científica y tecnológica a los estudiantes universitarios con calidad y responsabilidad social.”'),
+(2, '“Los peruanos acceden a una educación que les permite desarrollar su potencial desde la primera infancia y convertirse en ciudadanos que valoran su cultura, conocen sus derechos, y responsabilidades, desarrollan sus talentos y participan de manera innovadora, competitiva y comprometida en las dinámicas sociales, contribuyendo al desarrollo de sus comunidades y del país en su conjunto.”');
 
 -- --------------------------------------------------------
 
@@ -99,6 +118,12 @@ ALTER TABLE `datoscontacto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `datos_misionvision`
+--
+ALTER TABLE `datos_misionvision`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `datos_presentacion`
 --
 ALTER TABLE `datos_presentacion`
@@ -119,6 +144,12 @@ ALTER TABLE `redes_sociales`
 --
 ALTER TABLE `datoscontacto`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_misionvision`
+--
+ALTER TABLE `datos_misionvision`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_presentacion`
