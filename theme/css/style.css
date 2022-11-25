@@ -3420,8 +3420,24 @@ label {
 
 .mision_vision:hover {
   text-decoration: none;
-  color: #b48100;
+  color: #000000;
 }
+
+.icono{
+  height: 150px;
+  width: 150px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  display: inline-block;
+  transition: 0.2s ease;
+  color: #ffb600;
+}
+
+.icono:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
 /* Error page
 ================================================== */
 .error-page .error-code h2 {

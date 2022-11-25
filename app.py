@@ -52,7 +52,7 @@ def presentacion():
     conn.commit()
     print(datos_generales)
     
-    return render_template('presentacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion[1:],titulo=presentacion[0])
+    return render_template('presentacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion)
 
 @app.route('/mision_vision')
 def misionvision():
@@ -92,11 +92,16 @@ def objetivos():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_objetivos`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    presentacion=cursor.fetchall()
 
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
+    return render_template('objetivos.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion)
 
 @app.route('/organizacion')
 def organizacion():
@@ -115,7 +120,7 @@ def organizacion():
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
+    return render_template('organizacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
 
 @app.route('/comites')
 def comites():
@@ -134,7 +139,7 @@ def comites():
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('comites_de_trabajo.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
 @app.route('/autoridades')
 def autoridades():
