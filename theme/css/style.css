@@ -1057,7 +1057,6 @@ ul.navbar-nav > li > a {
 .dropdown-menu {
   text-align: left;
   background: #fff;
-  z-index: 100;
   min-width: 200px;
   border-radius: 0;
   border: 0;
@@ -3407,26 +3406,27 @@ label {
   filter: brightness(90%);
 }
 .mision_vision{
-  position: relative;
-  top: 10%; left: 32%; right: 50%;
   height: 150px;
   width: 150px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
   display: inline-block;
-  transition: 0.2s ease;
+  transition: 0.5s ease;
   color: #ffb600;
 }
 
 .mision_vision:hover {
   text-decoration: none;
   color: #000000;
+  animation: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
 }
 
 .icono{
   height: 150px;
   width: 150px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
   display: inline-block;
   transition: 0.2s ease;
@@ -3436,6 +3436,9 @@ label {
 .icono:hover {
   text-decoration: none;
   color: #000000;
+  animation: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
 }
 
 /* Error page

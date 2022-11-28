@@ -135,11 +135,16 @@ def comites():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_comites`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    comites=cursor.fetchall()
 
     conn.commit()
     print(datos_generales)
     
-    return render_template('comites_de_trabajo.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('comites_de_trabajo.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,comites=comites) 
 
 @app.route('/autoridades')
 def autoridades():
@@ -158,7 +163,7 @@ def autoridades():
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('autoridades.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
 @app.route('/historica')
 def historica():
