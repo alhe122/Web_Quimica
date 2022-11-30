@@ -26,7 +26,6 @@ def index():
     redes_sociales=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
 
@@ -50,7 +49,6 @@ def presentacion():
     presentacion=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('presentacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion)
 
@@ -73,7 +71,6 @@ def misionvision():
     cursor.execute(sql)
     misionvision=cursor.fetchall()
     conn.commit()
-    print(datos_generales)
     
     return render_template('mision_vision.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
     mision=misionvision[0],vision=misionvision[1]
@@ -99,7 +96,6 @@ def objetivos():
     presentacion=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('objetivos.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion)
 
@@ -118,7 +114,6 @@ def organizacion():
     redes_sociales=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('organizacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
 
@@ -142,7 +137,6 @@ def comites():
     comites=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('comites_de_trabajo.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,comites=comites) 
 
@@ -159,11 +153,16 @@ def autoridades():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
-
+    sql="SELECT * FROM `datos_autoridades`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    autoridades=cursor.fetchall()
     conn.commit()
     print(datos_generales)
     
-    return render_template('autoridades.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('autoridades.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales
+    ,autoridades=autoridades) 
 
 @app.route('/historica')
 def historica():
@@ -178,11 +177,15 @@ def historica():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_historica`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    historica=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('historica.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,historica=historica) 
 
 @app.route('/plan')
 def plan():
@@ -197,11 +200,15 @@ def plan():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_plan-estudios`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    plan=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('plan_de_estudios.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,plan=plan) 
 
 @app.route('/mallacurricular')
 def malla():
@@ -216,11 +223,15 @@ def malla():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_malla`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    malla=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('malla_curricular.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,malla=malla[0]) 
 
 @app.route('/horarios')
 def horarios():
@@ -235,11 +246,15 @@ def horarios():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_horarios`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    horario=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('horarios.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,horario=horario[0]) 
 
 @app.route('/tutorias')
 def tutorias():
@@ -254,11 +269,17 @@ def tutorias():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_tutorias`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    tutorias=cursor.fetchall()
 
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('tutorias.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
+    tutoria=tutorias[0]) 
 
 @app.route('/lineas_investigacion')
 def lineas():

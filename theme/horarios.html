@@ -200,27 +200,43 @@
 <section id="main-container" class="main-container">
   <div class="container">
     <div class="row">
-        <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
-          <h3 class="column-title">AUTORIDADES</h3>
-          {%for autoridad in autoridades%}
-            <div class="col-lg-3 col v-center animate__animated animate__fadeInLeftBig">
+      <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
+        <h3 class="column-title">Horarios</h3>
+      </div>
+      
+      <div class="container-fluid h-100"> 
+        <div class="row w-100">
+            <div class="col v-center animate__animated animate__backInUp">
               <span class="icono d-block mx-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-file-person icono" viewBox="0 0 16 16">
-                <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
-                <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
               </span>
-              <br>
-              <p style="text-align:justify;">{{autoridad[1]}}</p>
-              <p style="text-align:justify;">{{autoridad[2]}}</p>
-            </div>
-          {% endfor %}
-        </div><!-- Col end -->
+            </div>  
+        </div>
+      </div>
 
-        <div class="col-lg-12 mt-5 mt-lg-0">
+      <div class="col-lg-3 mt-5 mt-lg-0">
+      </div>
+
+        <div class="col-lg-6 mt-5 mt-lg-0">
           
-
         </div><!-- Col end -->
+
+        <div class="col-lg-3 mt-5 mt-lg-0">
+        </div>
+        <br>
+        <br>
+        <div class="container-fluid h-100"> 
+          <div class="row w-100">
+              <div class="col v-center">
+                <button onclick="location.href='{{horario[2]}}'" class="animate__animated animate__backInUp btn btn-primary d-block mx-auto">{{horario[1]}}</button>
+              </div>  
+          </div>
+        </div>
+          
+        
     </div><!-- Content row end -->
 
   </div><!-- Container end -->

@@ -3427,15 +3427,14 @@ label {
   height: 150px;
   width: 150px;
   background-color: rgba(255, 255, 255, 0);
-  border-radius: 50%;
   display: inline-block;
   transition: 0.2s ease;
-  color: #ffb600;
+  color: #000000;
 }
 
 .icono:hover {
   text-decoration: none;
-  color: #000000;
+  color: #ffb600;
   animation: pulse;
   animation-iteration-count: infinite;
   animation-duration: 1s;

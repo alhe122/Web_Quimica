@@ -200,27 +200,27 @@
 <section id="main-container" class="main-container">
   <div class="container">
     <div class="row">
-        <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
-          <h3 class="column-title">AUTORIDADES</h3>
-          {%for autoridad in autoridades%}
-            <div class="col-lg-3 col v-center animate__animated animate__fadeInLeftBig">
-              <span class="icono d-block mx-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-file-person icono" viewBox="0 0 16 16">
-                <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
-                <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-              </svg>
-              </span>
-              <br>
-              <p style="text-align:justify;">{{autoridad[1]}}</p>
-              <p style="text-align:justify;">{{autoridad[2]}}</p>
-            </div>
-          {% endfor %}
+      <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
+        <h3 class="column-title">{{malla[1]}}</h3>
+        <div class="row w-100">
+          <div class="col v-center">
+            <button onclick="location.href='{{malla[2]}}'" class="btn btn-primary d-block mx-auto">Malla Curricular</button>
+          </div>  
+        </div>
+      </div>
+
+      <div class="col-lg-1 mt-5 mt-lg-0">
+      </div>
+
+        <div class="col-lg-10 mt-5 mt-lg-0">
+          <br>
+          <a class="d-block animate__animated animate__fadeInRightBig">   
+            <img class="imagenhover" loading="lazy" width="100%" height="100%" src="{{url_for('static', filename='images/d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png')}}" alt="Banner">
+          </a>
         </div><!-- Col end -->
 
-        <div class="col-lg-12 mt-5 mt-lg-0">
-          
-
-        </div><!-- Col end -->
+        <div class="col-lg-1 mt-5 mt-lg-0">
+        </div>
     </div><!-- Content row end -->
 
   </div><!-- Container end -->
