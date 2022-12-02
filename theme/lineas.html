@@ -200,15 +200,29 @@
 <section id="main-container" class="main-container">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
-        <h3 class="column-title">Reseña Historica</h3>
-      </div>
-      <div class="col-lg-10 animate__animated animate__fadeInLeftBig">
-        {%for historica1 in historica%}
-          <p style="text-align:justify;">{{historica1[1]}}</p>
-        {% endfor %}
-      </div>
+        <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
+          <h3 class="column-title">Líneas de Investigación</h3>
+          {%for linea in lineas%}
+            <div class="col-lg-6 col v-center animate__animated animate__fadeInLeftBig">
+              <h4 class="column-title">{{linea[1]}}</h4>
+              <p style="text-align:justify;">{{linea[2]}}</p>
+              <button onclick="location.href='{{linea[3]}}'" class="animate__animated animate__backInUp btn btn-primary d-block mx-auto">{{linea[4]}}</button>
+            </div>
+          {% endfor %}
+        </div><!-- Col end -->
     </div><!-- Content row end -->
+  </div>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
+            <br>
+            <br>
+          <h3 class="column-title">VICERRECTORADO DE INVESTIGACIÓN</h3>
+              <div class="col-lg-12 col v-center animate__animated animate__fadeInLeftBig">
+                <button onclick="location.href='http://www.unjbg.edu.pe/investigacion/convocatorias.php'" class="animate__animated animate__backInUp btn btn-primary d-block mx-auto">VICERRECTORADO DE INVESTIGACIÓN</button>
+              </div>
+          </div><!-- Col end -->
+      </div><!-- Content row end -->
 
   </div><!-- Container end -->
 </section><!-- Main container end -->

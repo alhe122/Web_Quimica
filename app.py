@@ -276,7 +276,6 @@ def tutorias():
     tutorias=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('tutorias.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
     tutoria=tutorias[0]) 
@@ -294,11 +293,16 @@ def lineas():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_lineas-inv`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    lineas=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('lineas.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
+    lineas=lineas) 
 
 @app.route('/proyectos_investigacion')
 def proyectos():
@@ -313,11 +317,17 @@ def proyectos():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_proyectos-inv`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    proyectos=cursor.fetchall()
 
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
+    return render_template('proyectos.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
+    proyectos=proyectos)
 
 @app.route('/repositorio')
 def repositorio():
@@ -336,7 +346,7 @@ def repositorio():
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)  
+    return render_template('repositorio_tesis.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)  
 
 @app.route('/reglamentos_escuela')
 def reglamentos_escuela():

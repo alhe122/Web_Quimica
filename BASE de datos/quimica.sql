@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2022 a las 18:04:03
+-- Tiempo de generación: 02-12-2022 a las 18:05:04
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -46,6 +46,25 @@ INSERT INTO `datoscontacto` (`id`, `correo`, `telefono`, `cel`, `direccion`, `fa
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_autoridades`
+--
+
+CREATE TABLE `datos_autoridades` (
+  `id` int(11) NOT NULL,
+  `cargo` text NOT NULL,
+  `nombre` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_autoridades`
+--
+
+INSERT INTO `datos_autoridades` (`id`, `cargo`, `nombre`) VALUES
+(1, 'DECANO DE LA FACULTAD DE INGENIERÍA', 'Dr. Jesús Plácido Medina Salas');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `datos_comites`
 --
 
@@ -60,6 +79,83 @@ CREATE TABLE `datos_comites` (
 
 INSERT INTO `datos_comites` (`id`, `link_resolucion`) VALUES
 (1, 'https://drive.google.com/file/d/1sJQMym_iECMRvqIQRHqdkwJJdIM6XG3Q/view');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_historica`
+--
+
+CREATE TABLE `datos_historica` (
+  `id` int(11) NOT NULL,
+  `texto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_historica`
+--
+
+INSERT INTO `datos_historica` (`id`, `texto`) VALUES
+(1, 'Hola Mundo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_horarios`
+--
+
+CREATE TABLE `datos_horarios` (
+  `id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_horarios`
+--
+
+INSERT INTO `datos_horarios` (`id`, `texto`, `link`) VALUES
+(1, 'SEMESTRE 2022-II', 'https://www.facebook.com/ESIQUNJBG/posts/pfbid0DAzWJkLRVZCBLW6Ea887yqaJ2yis6JW6nzo9VSi8CCmphHC9WBCETjGpFDGkB8FLl?__cft__[0]=AZV5aNweM0xCb_LXn9BPvPYZEOFu7XodMvbcrLa4kUpBFeZltMYkWCFzP-41leSSHj61Y6MNmKPon2xHwjc_1iQMcXekiZXqNHLfwtFQu1qxkoJas9Gk4cZQjp8Db-bIClvfLkjmxdlRnzOPAUhTg3ThtAX8sA3oBFXmuXWP-45xCquSxKp7WjNygwXjWyrg64oWliDdi3S_q8oNsYRCkZIe&__tn__=%2CO%2CP-R');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_lineas-inv`
+--
+
+CREATE TABLE `datos_lineas-inv` (
+  `id` int(11) NOT NULL,
+  `titulo` text NOT NULL,
+  `texto` text NOT NULL,
+  `link` text NOT NULL,
+  `texto_boton` text NOT NULL DEFAULT 'Ver'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_lineas-inv`
+--
+
+INSERT INTO `datos_lineas-inv` (`id`, `titulo`, `texto`, `link`, `texto_boton`) VALUES
+(1, 'título 1', 'descripción', '', 'Resolución');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_malla`
+--
+
+CREATE TABLE `datos_malla` (
+  `id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_malla`
+--
+
+INSERT INTO `datos_malla` (`id`, `texto`, `link`) VALUES
+(1, 'MALLA CURRICULAR DE LA E.P. DE INGENIERÍA QUÍMICA 2018', '');
 
 -- --------------------------------------------------------
 
@@ -102,6 +198,25 @@ INSERT INTO `datos_objetivos` (`id`, `texto`, `es_titulo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_plan-estudios`
+--
+
+CREATE TABLE `datos_plan-estudios` (
+  `id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_plan-estudios`
+--
+
+INSERT INTO `datos_plan-estudios` (`id`, `texto`, `link`) VALUES
+(1, 'Plan de estudios F1-2014', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `datos_presentacion`
 --
 
@@ -124,6 +239,45 @@ INSERT INTO `datos_presentacion` (`id`, `presentacion`, `Es_titulo`) VALUES
 (6, 'CAMPO OCUPACIONAL', 1),
 (7, 'Comprende el amplio sector industrial: Refinación de Petróleo y gas natural, polímeros naturales y sintéticos, cemento cerámica y vidrio. Pinturas, lacas barnices y resinas.', 0),
 (8, 'Fertilizantes y explosivos. Industria no metálica (refractarios, mayólica). Industria textil, industria biotecnológica, (fármacos, proteínas y enzimas) Industria de bebidas (cerveza, gaseosa, vinos). Oleorresinas de páprika y orégano. Productos cárnicos y lácteos, industria del papel, azúcar y colorantes. Industria metalúrgica, concentración, fundición y refinación de minerales no férreos. Industria del acero, hidrometalurgia, recubrimientos electroquímicos, sanidad y seguridad medioambiental (Tecnologías limpias, monitoreo, control y tratamientos de contaminante, sistema de seguridad industrial).', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_proyectos-inv`
+--
+
+CREATE TABLE `datos_proyectos-inv` (
+  `id` int(11) NOT NULL,
+  `titulo` text NOT NULL,
+  `link` text NOT NULL,
+  `texto_boton` text NOT NULL DEFAULT 'Ver Proyecto'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_proyectos-inv`
+--
+
+INSERT INTO `datos_proyectos-inv` (`id`, `titulo`, `link`, `texto_boton`) VALUES
+(1, 'Proyecto 1', '', 'Ver Proyecto');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_tutorias`
+--
+
+CREATE TABLE `datos_tutorias` (
+  `id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_tutorias`
+--
+
+INSERT INTO `datos_tutorias` (`id`, `texto`, `link`) VALUES
+(1, 'RESOLUCIÓN DE FACULTAD N°0000000', '');
 
 -- --------------------------------------------------------
 
@@ -156,9 +310,39 @@ ALTER TABLE `datoscontacto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `datos_autoridades`
+--
+ALTER TABLE `datos_autoridades`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `datos_comites`
 --
 ALTER TABLE `datos_comites`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_historica`
+--
+ALTER TABLE `datos_historica`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_horarios`
+--
+ALTER TABLE `datos_horarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_lineas-inv`
+--
+ALTER TABLE `datos_lineas-inv`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_malla`
+--
+ALTER TABLE `datos_malla`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -174,9 +358,27 @@ ALTER TABLE `datos_objetivos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `datos_plan-estudios`
+--
+ALTER TABLE `datos_plan-estudios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `datos_presentacion`
 --
 ALTER TABLE `datos_presentacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_proyectos-inv`
+--
+ALTER TABLE `datos_proyectos-inv`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_tutorias`
+--
+ALTER TABLE `datos_tutorias`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -196,9 +398,39 @@ ALTER TABLE `datoscontacto`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `datos_autoridades`
+--
+ALTER TABLE `datos_autoridades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `datos_comites`
 --
 ALTER TABLE `datos_comites`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_historica`
+--
+ALTER TABLE `datos_historica`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_horarios`
+--
+ALTER TABLE `datos_horarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_lineas-inv`
+--
+ALTER TABLE `datos_lineas-inv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_malla`
+--
+ALTER TABLE `datos_malla`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -214,10 +446,28 @@ ALTER TABLE `datos_objetivos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `datos_plan-estudios`
+--
+ALTER TABLE `datos_plan-estudios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `datos_presentacion`
 --
 ALTER TABLE `datos_presentacion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_proyectos-inv`
+--
+ALTER TABLE `datos_proyectos-inv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_tutorias`
+--
+ALTER TABLE `datos_tutorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `redes_sociales`
