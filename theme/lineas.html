@@ -206,7 +206,13 @@
             <div class="col-lg-6 col v-center animate__animated animate__fadeInLeftBig">
               <h4 class="column-title">{{linea[1]}}</h4>
               <p style="text-align:justify;">{{linea[2]}}</p>
-              <button onclick="location.href='{{linea[3]}}'" class="animate__animated animate__backInUp btn btn-primary d-block mx-auto">{{linea[4]}}</button>
+              <div class="container-fluid h-100"> 
+                <div class="row w-100 align-items-center">
+                    <div class="col text-center">
+                      <a href="{{linea[3]}}" width="50px" height="50px" class="btn btn-primary regular-button">{{linea[4]}}</a>
+                    </div>  
+                </div>
+              </div>
             </div>
           {% endfor %}
         </div><!-- Col end -->
@@ -214,12 +220,18 @@
   </div>
   <div class="container">
     <div class="row">
-        <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
+        <div class="col-lg-12">
             <br>
             <br>
-          <h3 class="column-title">VICERRECTORADO DE INVESTIGACIÓN</h3>
-              <div class="col-lg-12 col v-center animate__animated animate__fadeInLeftBig">
-                <button onclick="location.href='http://www.unjbg.edu.pe/investigacion/convocatorias.php'" class="animate__animated animate__backInUp btn btn-primary d-block mx-auto">VICERRECTORADO DE INVESTIGACIÓN</button>
+          <h3 class="column-title  animate__animated animate__fadeInLeftBig">VICERRECTORADO DE INVESTIGACIÓN</h3>
+              <div class="col-lg-12 col v-center">
+                <div class="container-fluid h-100"> 
+                  <div class="row w-100 align-items-center">
+                      <div class="col text-center">
+                        <a href="http://www.unjbg.edu.pe/investigacion/convocatorias.php" width="50px" height="50px" class="animate__animated animate__backInUp btn btn-primary regular-button">VICERRECTORADO DE INVESTIGACIÓN</a>
+                      </div>  
+                  </div>
+                </div>
               </div>
           </div><!-- Col end -->
       </div><!-- Content row end -->

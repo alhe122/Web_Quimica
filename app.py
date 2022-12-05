@@ -324,7 +324,6 @@ def proyectos():
     proyectos=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('proyectos.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
     proyectos=proyectos)
@@ -342,13 +341,17 @@ def repositorio():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_repositorio-tesis`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    repositorio=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('repositorio_tesis.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)  
+    return render_template('repositorio_tesis.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,repositorio=repositorio[0])  
 
-@app.route('/reglamentos_escuela')
+@app.route('/reglamento')
 def reglamentos_escuela():
 
     sql="SELECT * FROM `datoscontacto` WHERE `id` = 1"
@@ -366,25 +369,6 @@ def reglamentos_escuela():
     print(datos_generales)
     
     return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
-
-@app.route('/reglamentos_estudiantes')
-def reglamentos_estudiantes():
-
-    sql="SELECT * FROM `datoscontacto` WHERE `id` = 1"
-    conn=mysql.connect()
-    cursor=conn.cursor()
-    cursor.execute(sql)
-    datos_generales=cursor.fetchall()
-    sql="SELECT * FROM `redes_sociales`"
-    conn=mysql.connect()
-    cursor=conn.cursor()
-    cursor.execute(sql)
-    redes_sociales=cursor.fetchall()
-
-    conn.commit()
-    print(datos_generales)
-    
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
 
 @app.route('/seguridad')
 def seguridad():
