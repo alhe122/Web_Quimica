@@ -364,11 +364,15 @@ def reglamentos_escuela():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_reglamento`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    reglamento=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('reglamento.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,reglamento=reglamento[0]) 
 
 @app.route('/seguridad')
 def seguridad():
@@ -383,11 +387,15 @@ def seguridad():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_seguridad`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    seguridad=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
+    return render_template('seguridad.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,seguridad=seguridad)
 
 @app.route('/protocolos')
 def protocolos():
@@ -402,11 +410,15 @@ def protocolos():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_protocolos`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    protocolo=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
-    
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+
+    return render_template('protocolo.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,protocolo=protocolo) 
 
 @app.route('/planes')
 def planes():
@@ -421,11 +433,14 @@ def planes():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
-
+    sql="SELECT * FROM `datos_planes`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    planes=cursor.fetchall()
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('planes.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,planes=planes) 
 
 @app.route('/institucionales')
 def institucionales():
