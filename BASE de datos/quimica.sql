@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-12-2022 a las 17:45:44
+-- Tiempo de generación: 06-12-2022 a las 17:56:59
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -60,7 +60,8 @@ CREATE TABLE `datos_autoridades` (
 --
 
 INSERT INTO `datos_autoridades` (`id`, `cargo`, `nombre`) VALUES
-(1, 'DECANO DE LA FACULTAD DE INGENIERÍA', 'Dr. Jesús Plácido Medina Salas');
+(1, 'DECANO DE LA FACULTAD DE INGENIERÍA', 'Dr. Jesús Plácido Medina Salas'),
+(2, 'Cargo 2', 'Nombre 2');
 
 -- --------------------------------------------------------
 
@@ -196,6 +197,47 @@ CREATE TABLE `datos_objetivos` (
 
 INSERT INTO `datos_objetivos` (`id`, `texto`, `es_titulo`) VALUES
 (1, 'OBJETIVOS', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_personal-administrativo`
+--
+
+CREATE TABLE `datos_personal-administrativo` (
+  `id` int(11) NOT NULL,
+  `cargo` text NOT NULL DEFAULT 'Personal',
+  `nombre` text NOT NULL DEFAULT 'Nombre Personal',
+  `correo` text NOT NULL DEFAULT '@unjbg.edu.pe'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_personal-administrativo`
+--
+
+INSERT INTO `datos_personal-administrativo` (`id`, `cargo`, `nombre`, `correo`) VALUES
+(1, 'Personal 1', 'Nombre Personal 1', '@unjbg.edu.pe'),
+(2, 'Personal 2', 'Nombre Personal 2', '@unjbg.edu.pe 2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_personal-docente`
+--
+
+CREATE TABLE `datos_personal-docente` (
+  `id` int(11) NOT NULL,
+  `link` text NOT NULL,
+  `texto_boton` text NOT NULL DEFAULT 'Periodo 20XX-I'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `datos_personal-docente`
+--
+
+INSERT INTO `datos_personal-docente` (`id`, `link`, `texto_boton`) VALUES
+(1, '', 'Periodo 2022-II'),
+(2, '', 'Periodo 2023-I');
 
 -- --------------------------------------------------------
 
@@ -463,6 +505,18 @@ ALTER TABLE `datos_objetivos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `datos_personal-administrativo`
+--
+ALTER TABLE `datos_personal-administrativo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_personal-docente`
+--
+ALTER TABLE `datos_personal-docente`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `datos_plan-estudios`
 --
 ALTER TABLE `datos_plan-estudios`
@@ -536,7 +590,7 @@ ALTER TABLE `datoscontacto`
 -- AUTO_INCREMENT de la tabla `datos_autoridades`
 --
 ALTER TABLE `datos_autoridades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_comites`
@@ -579,6 +633,18 @@ ALTER TABLE `datos_misionvision`
 --
 ALTER TABLE `datos_objetivos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_personal-administrativo`
+--
+ALTER TABLE `datos_personal-administrativo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_personal-docente`
+--
+ALTER TABLE `datos_personal-docente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_plan-estudios`

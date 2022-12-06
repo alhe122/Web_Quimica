@@ -442,25 +442,6 @@ def planes():
     
     return render_template('planes.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,planes=planes) 
 
-@app.route('/institucionales')
-def institucionales():
-
-    sql="SELECT * FROM `datoscontacto` WHERE `id` = 1"
-    conn=mysql.connect()
-    cursor=conn.cursor()
-    cursor.execute(sql)
-    datos_generales=cursor.fetchall()
-    sql="SELECT * FROM `redes_sociales`"
-    conn=mysql.connect()
-    cursor=conn.cursor()
-    cursor.execute(sql)
-    redes_sociales=cursor.fetchall()
-
-    conn.commit()
-    print(datos_generales)
-    
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
-
 @app.route('/docentes')
 def docentes():
 
@@ -474,11 +455,15 @@ def docentes():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
-
-    conn.commit()
-    print(datos_generales)
+    sql="SELECT * FROM `datos_personal-docente`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    personal=cursor.fetchall()
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    conn.commit()
+    
+    return render_template('personal-docente.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,personal=personal) 
 
 @app.route('/administrativos')
 def administrativos():
@@ -493,11 +478,16 @@ def administrativos():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_personal-administrativo`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    personal=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('personal-administrativo.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
+    personal=personal) 
 
 @app.route('/postulantes_ingresantes')
 def postulantes_ingresantes():

@@ -199,18 +199,20 @@
   <div class="container">
     <div class="row">
         <div class="col-lg-12 animate__animated animate__fadeInLeftBig">
-          <h3 class="column-title">AUTORIDADES</h3>
+          <h3 class="column-title">PERSONAL ADMINISTRATIVO</h3>
         </div><!-- Col end -->
-          {%for autoridad in autoridades%}
+          {%for personal1 in personal%}
             <div class="col-lg-3 col v-center animate__animated animate__fadeInLeftBig">
               <span class="icono d-block mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-                </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-file-person icono" viewBox="0 0 16 16">
+                <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+                <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
               </span>
               <br>
-              <p style="text-align:justify;">{{autoridad[1]}}</p>
-              <p style="text-align:justify;">{{autoridad[2]}}</p>
+              <h5 style="text-align:justify;">{{personal1[1]}}</h5>
+              <p style="text-align:justify;">{{personal1[2]}}</p>
+              <p style="text-align:justify;">{{personal1[3]}}</p>
             </div>
           {% endfor %}
         <div class="col-lg-12 mt-5 mt-lg-0">
