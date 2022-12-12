@@ -549,7 +549,6 @@ def laboratorios():
     redes_sociales=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('laboratorios.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
@@ -568,7 +567,6 @@ def oficinas():
     redes_sociales=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('oficinas-administrativas.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
@@ -585,11 +583,15 @@ def faq():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_faq`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    faqs=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('preguntas_frecuentes.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,faqs=faqs) 
 
 @app.route('/contacto')
 def contactenos():

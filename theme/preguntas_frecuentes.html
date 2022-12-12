@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Ingeniería Química</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Ingeniería Química">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name=author content="Ingeniería Química">
+  <meta name=generator content="Ingeniería Química">
+
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='images/logo-sm.png')}}">
+
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/bootstrap/bootstrap.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/fontawesome/css/all.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/animate-css/animate.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/slick/slick.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/slick/slick-theme.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/colorbox/colorbox.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+
+</head>
+<body>
+  <div class="body-inner">
+
+    <div id="top-bar" class="top-bar">
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-11 col-md-1">
+                <ul class="top-info text-center text-md-left">
+                    <li><a class="btn btn-primary2" href="http://www.unjbg.edu.pe" target="_blank">UNJBG</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="https://aula.unjbg.edu.pe/login/index.php" target="_blank">Aula Virtual</a>
+                    </li>  
+                    <li class="lihead"><a class="btn btn-primary2" href="http://www.dasa.unjbg.edu.pe/WbfSYWB_Login.aspx" target="_blank">Matrícula</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="http://bc.unjbg.edu.pe/" target="_blank">Biblioteca</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="http://www.unjbg.edu.pe/sisobun/" target="_blank">Bienestar Universitario</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="http://intranet.unjbg.edu.pe/login" target="_blank">Intranet</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="https://admision.unjbg.edu.pe/" target="_blank">Admisión</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="http://cepu.unjbg.edu.pe/" target="_blank">CEPU</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="http://finanzas.unjbg.edu.pe/login" target="_blank">Pagos en Línea</a>
+                    </li>
+                    <li><a class="btn btn-primary2" href="http://gradosytitulos.unjbg.edu.pe/login" target="_blank">Grados y Títulos</a>
+                    </li>
+                </ul>
+              </div>
+  
+              <div class="col-lg-1 col-md-1 top-social text-center text-md-right">
+                <ul class="lihead text-right">
+                  {%for redes in redes_sociales%}
+                  <li>
+                    <a title="{{redes[1]}}" href="{{redes[2]}}" target="_blank">
+                        <span class="social-icon"><i class="fab fa-{{redes[3]}}"></i></span>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+          </div>
+        </div>
+    </div>
+<header id="header" class="header-one">
+  <div class="bg-white">
+    <div class="container">
+      <div class="logo-area">
+          <div class="row align-items-center">
+            <div class="logo col-lg-3 text-center text-lg-left mb-0 mb-md-0 mb-lg-0">
+                <a class="d-block" href="/">
+                  
+                  <img loading="lazy" src="{{url_for('static', filename='images/d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png')}}" alt="Banner">
+                </a>
+            </div>
+  
+            <div class="col-lg-9 header-right">
+                <ul class="top-info-box">
+                  <li>
+                    <a class="topinfoText" href="/">INICIO</a>
+                  </li>
+                  <li>
+                    <a class="topinfoText" href="tramites">TRÁMITES</a>
+                  </li>
+                  <li class="last">
+                    <a class="topinfoText" href="contacto">CONTÁCTENOS</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-navigation">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div id="navbar-collapse" class="collapse navbar-collapse">
+                    
+                  <ul class="nav navbar-nav mr-auto">
+                      <li class="nav-item dropdown">
+                          <a style="cursor: default" class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros <i class="fa fa-angle-down"></i></a>
+                          <ul class="dropdown-menu animate__animated animate__fadeInDown" role="menu">
+                            <li><a class="animate__animated animate__fadeInDown" href="presentacion">Presentación</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="mision_vision">Misión y Visión</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="objetivos">Objetivos</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="organizacion">Organización</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="comites">Comités de trabajo</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="autoridades">Autoridades</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="historica">Reseña Histórica</a></li>
+                          </ul>
+                      </li>
+
+                      <li class="nav-item dropdown">
+                          <a style="cursor: default" class="nav-link dropdown-toggle" data-toggle="dropdown">Académico <i class="fa fa-angle-down"></i></a>
+                          <ul class="dropdown-menu animate__animated animate__fadeInDown" role="menu">
+                            <li><a class="animate__animated animate__fadeInDown" href="plan">Plan de Estudios</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="mallacurricular">Malla Curricular</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="horarios">Horarios</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="tutorias">Tutorías</a></li>
+                          </ul>
+                      </li>
+              
+                      <li class="nav-item dropdown">
+                          <a style="cursor: default" class="nav-link dropdown-toggle" data-toggle="dropdown">Investigación <i class="fa fa-angle-down"></i></a>
+                          <ul class="dropdown-menu animate__animated animate__fadeInDown" role="menu">
+                            <li><a class="animate__animated animate__fadeInDown" href="lineas_investigacion">Líneas de Investigación</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="proyectos_investigacion">Proyectos de Investigación</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="repositorio">Repositorio de Tesis</a></li>
+                          </ul>
+                      </li>
+              
+                      <li class="nav-item dropdown">
+                        <a style="cursor: default" class="nav-link dropdown-toggle" data-toggle="dropdown">Reglamentos <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu animate__animated animate__fadeInDown" role="menu">
+                          <li><a class="animate__animated animate__fadeInDown" href="reglamento">Reglamento</a></li>
+                          <li><a class="animate__animated animate__fadeInDown" href="seguridad">Seguridad</a></li>
+                          <li><a class="animate__animated animate__fadeInDown" href="protocolos">Protocolos</a></li>
+                          <li><a class="animate__animated animate__fadeInDown" href="planes">Planes</a></li>
+                        </ul>
+                    </li>
+              
+                      <li class="nav-item dropdown">
+                          <a style="cursor: default" class="nav-link dropdown-toggle" data-toggle="dropdown">Personal <i class="fa fa-angle-down"></i></a>
+                          <ul class="dropdown-menu animate__animated animate__fadeInDown" role="menu">
+                            <li><a class="animate__animated animate__fadeInDown" href="docentes">Docente</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="administrativos">Administrativo</a></li>
+                          </ul>
+                      </li>
+              
+                      <li class="nav-item dropdown">
+                          <a style="cursor: default" class="nav-link dropdown-toggle" data-toggle="dropdown">Estadística <i class="fa fa-angle-down"></i></a>
+                          <ul class="dropdown-menu animate__animated animate__fadeInDown" role="menu">
+                            <li><a class="animate__animated animate__fadeInDown" href="postulantes_ingresantes">N° de Postulantes e Ingresantes</a></li>
+                            <li><a class="animate__animated animate__fadeInDown" href="estudiantes_egresados">N° de Estudiantes por Semestre/año y N° de Egresados</a></li>
+                          </ul>
+                      </li>
+
+                      <li class="nav-item dropdown">
+                        <a style="cursor: default" class="nav-link dropdown-toggle" data-toggle="dropdown">Infraestructura <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu animate__animated animate__fadeInDown" role="menu">
+                          <li><a class="animate__animated animate__fadeInDown" href="laboratorios">Laboratorios</a></li>
+                          <li><a class="animate__animated animate__fadeInDown" href="oficinas">Oficinas Administrativas</a></li>
+                        </ul>
+                      </li>
+              
+                      <li class="nav-item"><a class="nav-link" href="faq">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+              </nav>
+          </div>
+        </div>
+        <!--/<div class="nav-search">
+          <span id="search"><i class="fa fa-search"></i></span>
+        </div>-->
+
+        <div class="search-block" style="display: none;">
+          <label for="search-field" class="w-100 mb-0">
+            <input type="text" class="form-control" id="search-field" placeholder="Buscar Oculto">
+          </label>
+          <span class="search-close">&times;</span>
+        </div>
+    </div>
+  </div>
+</header>
+
+<section id="main-container" class="main-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+      <h3 class="animate__animated animate__fadeInLeftBig column-title">Preguntas Frecuentes</h3></div>
+        {% set bool = true %}
+        {% for faq in faqs %}
+        {% if bool %}
+        <div class="col-lg-12">
+        {% else %}
+        <div class="col-lg-12 faqcolor0"> 
+        {% endif %}
+          <br>
+          <h4 class="animate__animated animate__fadeInLeftBig column-title">{{faq[4]}}</h4>
+          <p style="text-align:justify;">{{faq[1]}}</p>
+          <div class="row w-100 align-items-center">
+            <div class="col text-center">
+              <a href="{{faq[2]}}" width="50px" height="50px" class="animate__animated animate__backInUp btn btn-primary regular-button">{{faq[3]}}</a>
+            </div>  
+          </div>
+          <br>
+        </div>
+        {% set bool = not bool %}
+        {% endfor %}
+      <div class="col-lg-1 mt-5 mt-lg-0">
+      </div>
+
+        <div class="col-lg-10 mt-5 mt-lg-0">
+          <br>
+          <a class="d-block animate__animated animate__backInUp">   
+            <img class="imagenhover" loading="lazy" width="100%" height="100%" src="{{url_for('static', filename='images/d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png')}}" alt="Banner">
+          </a>
+        </div><!-- Col end -->
+
+        <div class="col-lg-1 mt-5 mt-lg-0">
+        </div>
+    </div><!-- Content row end -->
+
+  </div><!-- Container end -->
+</section><!-- Main container end -->
+
+<footer id="footer" class="footer bg-overlay">
+  <div class="footer-main">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-4 col-md-6 footer-widget footer-about">
+          <h3 class="widget-title">CONTÁCTENOS</h3>
+          {% if datos_generales[4] != "" %}
+            <p>Dirección: {{datos_generales[4]}}</p>
+          {% endif %}
+          {% if datos_generales[2] != "" %}
+            <p>Teléfono: {{datos_generales[2]}}</p>
+          {% endif %}
+          {% if datos_generales[3] != "" %}
+            <p>Celular: {{datos_generales[3]}}</p>
+          {% endif %}
+          {% if datos_generales[1] != "" %}
+            <p>Correo: {{datos_generales[1]}}</p>
+          {% endif %}
+          <div class="footer-social">
+            <ul>
+              {%for redes in redes_sociales%}
+              <li><a href="{{redes[2]}}" target="_blank" aria-label="{{redes[1]}}"><i class="fab fa-{{redes[3]}}"></i></a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-8 col-md-6 footer-widget right mt-5 mt-md-0">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1052.8189750774463!2d-70.25025405644637!3d-18.02567933972721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915acf5d1d19a029%3A0xbd7b1220077c70b!2sUniversidad%20Nacional%20Jorge%20Basadre%20Grohmann!5e1!3m2!1ses!2sus!4v1669994979780!5m2!1ses!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-9">
+          <div class="copyright-info">
+            <span>Escuela Profesional de Ingeniería Química | Facultad de Ingeniería | UNJBG | Copyright &copy; <script>
+                document.write(new Date().getFullYear())
+              </script>, Todos los Derechos Reservados.</span>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="footer-menu text-md-right">
+            <ul class="list-unstyled">
+              <li><a href="presentacion">Sobre</a></li>
+              <li><a href="contacto">Contacto</a></li>
+              <li><a href="faq">Faq</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
+        <button class="btn btn-primary" title="Back to Top">
+          <i class="fa fa-angle-double-up"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script src="{{url_for('static', filename='plugins/jQuery/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/bootstrap/bootstrap.min.js')}}" defer></script>
+<script src="{{url_for('static', filename='plugins/slick/slick.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/slick/slick-animation.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/colorbox/jquery.colorbox.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/shuffle/shuffle.min.js')}}" defer></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+<script src="{{url_for('static', filename='plugins/google-map/map.js')}}" defer></script>
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+
+</div>
+</body>
+
+</html>
