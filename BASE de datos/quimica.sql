@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2022 a las 17:56:59
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 12-12-2022 a las 05:03:43
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `datoscontacto` (
   `cel` varchar(20) NOT NULL,
   `direccion` varchar(60) NOT NULL,
   `facebook` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datoscontacto`
@@ -53,7 +53,7 @@ CREATE TABLE `datos_autoridades` (
   `id` int(11) NOT NULL,
   `cargo` text NOT NULL,
   `nombre` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_autoridades`
@@ -73,7 +73,7 @@ CREATE TABLE `datos_comites` (
   `id` int(11) NOT NULL,
   `link_resolucion` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Resolución'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_comites`
@@ -85,13 +85,34 @@ INSERT INTO `datos_comites` (`id`, `link_resolucion`, `texto_boton`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_estudiantes-egresados`
+--
+
+CREATE TABLE `datos_estudiantes-egresados` (
+  `id` int(11) NOT NULL,
+  `año` int(11) NOT NULL,
+  `matriculados` int(11) NOT NULL,
+  `egresados` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `datos_estudiantes-egresados`
+--
+
+INSERT INTO `datos_estudiantes-egresados` (`id`, `año`, `matriculados`, `egresados`) VALUES
+(1, 2023, 500, 24),
+(2, 2022, 450, 30);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `datos_historica`
 --
 
 CREATE TABLE `datos_historica` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_historica`
@@ -110,7 +131,7 @@ CREATE TABLE `datos_horarios` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL,
   `link` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_horarios`
@@ -131,7 +152,7 @@ CREATE TABLE `datos_lineas-inv` (
   `texto` text NOT NULL,
   `link` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Ver'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_lineas-inv`
@@ -151,7 +172,7 @@ CREATE TABLE `datos_malla` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL,
   `link` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_malla`
@@ -169,7 +190,7 @@ INSERT INTO `datos_malla` (`id`, `texto`, `link`) VALUES
 CREATE TABLE `datos_misionvision` (
   `id` int(11) NOT NULL,
   `mision_vision` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_misionvision`
@@ -189,14 +210,15 @@ CREATE TABLE `datos_objetivos` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL,
   `es_titulo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_objetivos`
 --
 
 INSERT INTO `datos_objetivos` (`id`, `texto`, `es_titulo`) VALUES
-(1, 'OBJETIVOS', 1);
+(1, 'OBJETIVOS', 1),
+(2, 'Hola\r\nXD', 0);
 
 -- --------------------------------------------------------
 
@@ -209,7 +231,7 @@ CREATE TABLE `datos_personal-administrativo` (
   `cargo` text NOT NULL DEFAULT 'Personal',
   `nombre` text NOT NULL DEFAULT 'Nombre Personal',
   `correo` text NOT NULL DEFAULT '@unjbg.edu.pe'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_personal-administrativo`
@@ -229,7 +251,7 @@ CREATE TABLE `datos_personal-docente` (
   `id` int(11) NOT NULL,
   `link` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Periodo 20XX-I'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_personal-docente`
@@ -249,7 +271,7 @@ CREATE TABLE `datos_plan-estudios` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL,
   `link` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_plan-estudios`
@@ -270,7 +292,7 @@ CREATE TABLE `datos_planes` (
   `titulo` text NOT NULL DEFAULT 'Plan',
   `link` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Ver Plan'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_planes`
@@ -283,6 +305,35 @@ INSERT INTO `datos_planes` (`id`, `titulo`, `link`, `texto_boton`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_postulantes-ingresantes`
+--
+
+CREATE TABLE `datos_postulantes-ingresantes` (
+  `id` int(11) NOT NULL,
+  `año` int(11) NOT NULL,
+  `postulantes_ingresantes` tinyint(1) NOT NULL DEFAULT 0,
+  `CEPU_I` int(11) NOT NULL,
+  `CEPU_II` int(11) NOT NULL,
+  `CEPU_III` int(11) NOT NULL,
+  `FASE_I` int(11) NOT NULL,
+  `FASE_II` int(11) NOT NULL,
+  `COLEGIOS` int(11) NOT NULL,
+  `TRASLADO_EXTERNO` int(11) NOT NULL,
+  `TRASLADO_INTERNO` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `datos_postulantes-ingresantes`
+--
+
+INSERT INTO `datos_postulantes-ingresantes` (`id`, `año`, `postulantes_ingresantes`, `CEPU_I`, `CEPU_II`, `CEPU_III`, `FASE_I`, `FASE_II`, `COLEGIOS`, `TRASLADO_EXTERNO`, `TRASLADO_INTERNO`) VALUES
+(1, 2022, 0, 489, 490, 491, 100, 101, 102, 5, 5),
+(2, 2022, 1, 5, 6, 7, 8, 9, 10, 1, 2),
+(3, 2023, 0, 300, 301, 302, 303, 304, 45, 6, 7);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `datos_presentacion`
 --
 
@@ -290,7 +341,7 @@ CREATE TABLE `datos_presentacion` (
   `id` int(11) NOT NULL,
   `presentacion` text NOT NULL,
   `Es_titulo` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_presentacion`
@@ -317,7 +368,7 @@ CREATE TABLE `datos_protocolos` (
   `titulo` text NOT NULL DEFAULT 'Protocolo',
   `link` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Ver'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_protocolos`
@@ -338,7 +389,7 @@ CREATE TABLE `datos_proyectos-inv` (
   `titulo` text NOT NULL,
   `link` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Ver Proyecto'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_proyectos-inv`
@@ -358,7 +409,7 @@ CREATE TABLE `datos_reglamento` (
   `id` int(11) NOT NULL,
   `link` text NOT NULL,
   `texto_boton` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_reglamento`
@@ -377,7 +428,7 @@ CREATE TABLE `datos_repositorio-tesis` (
   `id` int(11) NOT NULL,
   `link` text NOT NULL,
   `texto_boton` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_repositorio-tesis`
@@ -397,7 +448,7 @@ CREATE TABLE `datos_seguridad` (
   `titulo` text NOT NULL DEFAULT 'Reglamento',
   `link` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Ver'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_seguridad`
@@ -417,7 +468,7 @@ CREATE TABLE `datos_tutorias` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL,
   `link` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_tutorias`
@@ -437,7 +488,7 @@ CREATE TABLE `redes_sociales` (
   `nombre_red` varchar(20) NOT NULL,
   `link` varchar(80) NOT NULL,
   `icono_bootstrap` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `redes_sociales`
@@ -466,6 +517,12 @@ ALTER TABLE `datos_autoridades`
 -- Indices de la tabla `datos_comites`
 --
 ALTER TABLE `datos_comites`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_estudiantes-egresados`
+--
+ALTER TABLE `datos_estudiantes-egresados`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -526,6 +583,12 @@ ALTER TABLE `datos_plan-estudios`
 -- Indices de la tabla `datos_planes`
 --
 ALTER TABLE `datos_planes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_postulantes-ingresantes`
+--
+ALTER TABLE `datos_postulantes-ingresantes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -599,6 +662,12 @@ ALTER TABLE `datos_comites`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `datos_estudiantes-egresados`
+--
+ALTER TABLE `datos_estudiantes-egresados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `datos_historica`
 --
 ALTER TABLE `datos_historica`
@@ -632,7 +701,7 @@ ALTER TABLE `datos_misionvision`
 -- AUTO_INCREMENT de la tabla `datos_objetivos`
 --
 ALTER TABLE `datos_objetivos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_personal-administrativo`
@@ -657,6 +726,12 @@ ALTER TABLE `datos_plan-estudios`
 --
 ALTER TABLE `datos_planes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_postulantes-ingresantes`
+--
+ALTER TABLE `datos_postulantes-ingresantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_presentacion`

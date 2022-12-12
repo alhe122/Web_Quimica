@@ -3440,6 +3440,9 @@ label {
   animation-duration: 1s;
 }
 
+.table-fount{
+  font-size: 14px;
+}
 /* Error page
 ================================================== */
 .error-page .error-code h2 {

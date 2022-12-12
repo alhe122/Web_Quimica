@@ -502,11 +502,15 @@ def postulantes_ingresantes():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT *,(CEPU_I+CEPU_II+CEPU_III+FASE_I+FASE_II+COLEGIOS+TRASLADO_EXTERNO+TRASLADO_INTERNO) as total,IF(postulantes_ingresantes=0, CONCAT('Postulantes - ',año), CONCAT('Ingresantes - ',año)) as titulo FROM `datos_postulantes-ingresantes` order by año asc, postulantes_ingresantes asc;"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    postulantes_ingresantes=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('postulantes-ingresantes.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,postulantes_ingresantes=postulantes_ingresantes) 
 
 @app.route('/estudiantes_egresados')
 def estudiantes_egresados():
@@ -521,11 +525,14 @@ def estudiantes_egresados():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
-
+    sql="SELECT * FROM `datos_estudiantes-egresados` order by año asc"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    estudiantes_egresados=cursor.fetchall()
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('estudiantes-egresados.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,estudiantes_egresados=estudiantes_egresados) 
 
 @app.route('/laboratorios')
 def laboratorios():
@@ -544,7 +551,7 @@ def laboratorios():
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('laboratorios.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
 @app.route('/oficinas')
 def oficinas():
@@ -563,7 +570,7 @@ def oficinas():
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('oficinas-administrativas.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
 @app.route('/faq')
 def faq():
@@ -601,7 +608,7 @@ def contactenos():
     conn.commit()
     print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('contacto.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
 @app.route('/tramites')
 def tramites():
