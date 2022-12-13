@@ -583,12 +583,12 @@ def faq():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
-    sql="SELECT * FROM `datos_faq`"
+    sql="SELECT *,@rownum:=@rownum+1 ‘nro’ FROM `datos_faq`, (SELECT @rownum:=0) r"
     conn=mysql.connect()
     cursor=conn.cursor()
     cursor.execute(sql)
     faqs=cursor.fetchall()
-
+    print(faqs)
     conn.commit()
     
     return render_template('preguntas_frecuentes.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,faqs=faqs) 

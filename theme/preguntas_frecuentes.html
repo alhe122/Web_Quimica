@@ -200,37 +200,27 @@
     <div class="row">
       <div class="col-lg-12">
       <h3 class="animate__animated animate__fadeInLeftBig column-title">Preguntas Frecuentes</h3></div>
-        {% set bool = true %}
         {% for faq in faqs %}
-        {% if bool %}
-        <div class="col-lg-12">
+        {% if faq[6] is even%}
+        <div class="col-lg-12 faqcolor0 animate__animated animate__fadeInRightBig">
         {% else %}
-        <div class="col-lg-12 faqcolor0"> 
+        <div class="col-lg-12 animate__animated animate__fadeInLeftBig"> 
         {% endif %}
           <br>
-          <h4 class="animate__animated animate__fadeInLeftBig column-title">{{faq[4]}}</h4>
+          <h4 class="column-title">{{faq[4]}}</h4>
           <p style="text-align:justify;">{{faq[1]}}</p>
           <div class="row w-100 align-items-center">
+            {% if not faq[2] == ""%}
             <div class="col text-center">
               <a href="{{faq[2]}}" width="50px" height="50px" class="animate__animated animate__backInUp btn btn-primary regular-button">{{faq[3]}}</a>
-            </div>  
+            </div> 
+            {% endif %} 
           </div>
           <br>
         </div>
-        {% set bool = not bool %}
         {% endfor %}
       <div class="col-lg-1 mt-5 mt-lg-0">
       </div>
-
-        <div class="col-lg-10 mt-5 mt-lg-0">
-          <br>
-          <a class="d-block animate__animated animate__backInUp">   
-            <img class="imagenhover" loading="lazy" width="100%" height="100%" src="{{url_for('static', filename='images/d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png')}}" alt="Banner">
-          </a>
-        </div><!-- Col end -->
-
-        <div class="col-lg-1 mt-5 mt-lg-0">
-        </div>
     </div><!-- Content row end -->
 
   </div><!-- Container end -->
