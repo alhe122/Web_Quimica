@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2022 a las 05:10:36
+-- Tiempo de generación: 23-12-2022 a las 06:46:09
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -162,6 +162,28 @@ CREATE TABLE `datos_horarios` (
 
 INSERT INTO `datos_horarios` (`id`, `texto`, `link`) VALUES
 (1, 'SEMESTRE 2022-II', 'https://www.facebook.com/ESIQUNJBG/posts/pfbid0DAzWJkLRVZCBLW6Ea887yqaJ2yis6JW6nzo9VSi8CCmphHC9WBCETjGpFDGkB8FLl?__cft__[0]=AZV5aNweM0xCb_LXn9BPvPYZEOFu7XodMvbcrLa4kUpBFeZltMYkWCFzP-41leSSHj61Y6MNmKPon2xHwjc_1iQMcXekiZXqNHLfwtFQu1qxkoJas9Gk4cZQjp8Db-bIClvfLkjmxdlRnzOPAUhTg3ThtAX8sA3oBFXmuXWP-45xCquSxKp7WjNygwXjWyrg64oWliDdi3S_q8oNsYRCkZIe&__tn__=%2CO%2CP-R');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_index`
+--
+
+CREATE TABLE `datos_index` (
+  `id` int(11) NOT NULL,
+  `foto` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `datos_index`
+--
+
+INSERT INTO `datos_index` (`id`, `foto`) VALUES
+(1, 'El Ingeniero Químico, tendrá una formación Integral en el campo científico y tecnológico; será capaz de comprender, incorporar, y enriquecer las denominadas tecnologías emergentes y de adaptarse a los campos tecnológicos.\r\nEstará capacitado para: planear, dimensionar, diseñar y simular plantas de procesos; formular, ejecutar y evaluar proyectos industriales; supervisar, administrar y controlar procesos industriales; investigar y desarrollar nuevos procesos; adecuar, modificar y optimizar los existentes; planificar, constituir y gerenciar empresas.'),
+(7, '20221434243dfc4ac50eca195cc2b1a4fd8ac56e05---cone-da-motocicleta-esporte-by-vexels.png'),
+(8, '202215413222788826_1986759444901478_7707950608289885239_n.png'),
+(9, '2022154433banner1.jpg'),
+(10, '2022154754d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png');
 
 -- --------------------------------------------------------
 
@@ -484,6 +506,26 @@ INSERT INTO `datos_seguridad` (`id`, `titulo`, `link`, `texto_boton`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_tramites`
+--
+
+CREATE TABLE `datos_tramites` (
+  `id` int(11) NOT NULL,
+  `link` text NOT NULL,
+  `boton_texto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `datos_tramites`
+--
+
+INSERT INTO `datos_tramites` (`id`, `link`, `boton_texto`) VALUES
+(1, 'TEXTO PRUEBA', ''),
+(2, '', 'Boton 1');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `datos_tutorias`
 --
 
@@ -564,6 +606,12 @@ ALTER TABLE `datos_historica`
 -- Indices de la tabla `datos_horarios`
 --
 ALTER TABLE `datos_horarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_index`
+--
+ALTER TABLE `datos_index`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -657,6 +705,12 @@ ALTER TABLE `datos_seguridad`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `datos_tramites`
+--
+ALTER TABLE `datos_tramites`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `datos_tutorias`
 --
 ALTER TABLE `datos_tutorias`
@@ -713,6 +767,12 @@ ALTER TABLE `datos_historica`
 --
 ALTER TABLE `datos_horarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_index`
+--
+ALTER TABLE `datos_index`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_lineas-inv`
@@ -802,6 +862,12 @@ ALTER TABLE `datos_repositorio-tesis`
 -- AUTO_INCREMENT de la tabla `datos_seguridad`
 --
 ALTER TABLE `datos_seguridad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `datos_tramites`
+--
+ALTER TABLE `datos_tramites`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --

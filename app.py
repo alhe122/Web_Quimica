@@ -1,6 +1,8 @@
 from flask import Flask
-from flask import render_template,request
+from flask import render_template,request, redirect
 from flaskext.mysql import MySQL
+from datetime import datetime
+import os
 
 app =Flask(__name__,template_folder='theme',static_folder='theme',)
 
@@ -10,6 +12,9 @@ app.config['MYSQL_DATABASE_USER']='root'
 app.config['MYSQL_DATABASE_PASSWORD']=''
 app.config['MYSQL_DATABASE_DB']='quimica'
 mysql.init_app(app)
+
+CARPETA=os.path.join('theme/images')
+app.config['CARPETA']=CARPETA
 
 @app.route('/')
 def index():
@@ -24,10 +29,81 @@ def index():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
-
+    sql="SELECT * FROM `datos_index`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    index=cursor.fetchall()
     conn.commit()
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales)
+    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,datos_index=index[0],fotos=index[1:])
+
+@app.route('/edit')
+def index_edit():
+
+    sql="SELECT * FROM `datoscontacto` WHERE `id` = 1"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    datos_generales=cursor.fetchall()
+    sql="SELECT * FROM `redes_sociales`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_index`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    index=cursor.fetchall()
+    conn.commit()
+    
+    return render_template('index--edit.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,datos_index=index[0],fotos=index[1:])
+
+@app.route('/update', methods=['POST'])
+def index_update():
+
+    _texto=request.form['texto_index']
+    
+    sql="UPDATE datos_index SET foto=%s WHERE id=1;"
+    datos=(_texto)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/edit')
+
+@app.route('/upload_imagen', methods=['POST'])
+def index_updateimagen():
+
+    _imagen=request.files['txtFile']
+    tiempo=datetime.now().strftime("%Y%H%M%S")
+    if _imagen.filename!='':
+        newNameImage=tiempo+_imagen.filename
+        _imagen.save("theme/images/"+newNameImage)
+    
+    sql="INSERT INTO `datos_index` (`id`,`foto`) VALUES (NULL,%s);"
+    datos=(newNameImage)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/edit')
+
+@app.route('/delete_imagen/<int:id>')
+def index_deleteimage(id):
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    
+    cursor.execute("SELECT foto FROM datos_index WHERE id=%s",id)
+    fila=cursor.fetchall()
+    os.remove(os.path.join(app.config['CARPETA'],fila[0][0]))
+    
+    cursor.execute("DELETE FROM datos_index WHERE id=%s",(id))
+    conn.commit()
+    return redirect('/edit')
 
 @app.route('/presentacion')
 def presentacion():
@@ -608,7 +684,6 @@ def contactenos():
     redes_sociales=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
     return render_template('contacto.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
 
@@ -625,11 +700,15 @@ def tramites():
     cursor=conn.cursor()
     cursor.execute(sql)
     redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_tramites`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    tramites=cursor.fetchall()
 
     conn.commit()
-    print(datos_generales)
     
-    return render_template('index.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales) 
+    return render_template('tramites.html',datos_generales=datos_generales[0],tramites_texto=tramites[0],tramites=tramites[1:]) 
 
 if __name__=='__main__':
     app.run(debug=True)

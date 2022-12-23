@@ -1278,7 +1278,7 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
 ================================================== */
 /*-- Main slide --*/
 .banner-carousel .banner-carousel-item {
-  height: 700px;
+  height: 530px;
   color: #fff;
   background-position: 50% 50%;
   background-size: cover;
@@ -1576,7 +1576,8 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
   margin: 0;
   line-height: 36px;
   font-size: 18px;
-  text-transform: uppercase;
+  text-transform: none;
+  font-weight: bold;
 }
 
 /* Intro
