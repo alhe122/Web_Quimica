@@ -126,7 +126,31 @@ def presentacion():
 
     conn.commit()
     
-    return render_template('presentacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion)
+    return render_template('presentacion.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion[0])
+
+@app.route('/presentacion_edit')
+def presentacion_edit():
+
+    sql="SELECT * FROM `datoscontacto` WHERE `id` = 1"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    datos_generales=cursor.fetchall()
+    sql="SELECT * FROM `redes_sociales`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_presentacion`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    presentacion=cursor.fetchall()
+
+    conn.commit()
+    
+    return render_template('presentacion--edit.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion[0])
+
 
 @app.route('/mision_vision')
 def misionvision():

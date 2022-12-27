@@ -174,7 +174,7 @@
                   </div>
                 </form>
                 <textarea id="texto_oculto" type="text" name="texto_oculto" required placeholder="text" style="display: none;">{{datos_index[1]}}</textarea>
-                <p id="texto_index1" class="action-title">
+                <p id="texto_index1" class="action-title" style="text-align:justify;">
                   <script>
                     function store() {
                       var txt = document.getElementById("texto_oculto").value;
@@ -184,7 +184,7 @@
                       console.log(txttostore);
                       return txttostore;
                     }
-                    document.write(store());
+                    document.write(store("texto_oculto"));
                   </script>
                 </p>
                 <div id="texto_indexbutton" class="col text-center">

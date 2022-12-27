@@ -25,48 +25,6 @@
 <body>
   <div class="body-inner">
 
-    <div id="top-bar" class="top-bar">
-        <div class="container">
-          <div class="row">
-              <div class="col-lg-11 col-md-1">
-                <ul class="top-info text-center text-md-left">
-                    <li><a class="btn btn-primary2" href="http://www.unjbg.edu.pe" target="_blank">UNJBG</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="https://aula.unjbg.edu.pe/login/index.php" target="_blank">Aula Virtual</a>
-                    </li>  
-                    <li class="lihead"><a class="btn btn-primary2" href="http://www.dasa.unjbg.edu.pe/WbfSYWB_Login.aspx" target="_blank">Matrícula</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="http://bc.unjbg.edu.pe/" target="_blank">Biblioteca</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="http://www.unjbg.edu.pe/sisobun/" target="_blank">Bienestar Universitario</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="http://intranet.unjbg.edu.pe/login" target="_blank">Intranet</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="https://admision.unjbg.edu.pe/" target="_blank">Admisión</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="http://cepu.unjbg.edu.pe/" target="_blank">CEPU</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="http://finanzas.unjbg.edu.pe/login" target="_blank">Pagos en Línea</a>
-                    </li>
-                    <li><a class="btn btn-primary2" href="http://gradosytitulos.unjbg.edu.pe/login" target="_blank">Grados y Títulos</a>
-                    </li>
-                </ul>
-              </div>
-  
-              <div class="col-lg-1 col-md-1 top-social text-center text-md-right">
-                <ul class="lihead text-right">
-                  {%for redes in redes_sociales%}
-                  <li>
-                    <a title="{{redes[1]}}" href="{{redes[2]}}" target="_blank">
-                        <span class="social-icon"><i class="fab fa-{{redes[3]}}"></i></span>
-                    </a>
-                  </li>
-                  {% endfor %}
-                </ul>
-              </div>
-          </div>
-        </div>
-    </div>
 <header id="header" class="header-one">
   <div class="bg-white">
     <div class="container">
@@ -213,20 +171,51 @@
   <div class="container">
     <div class="row">
         <div class="col-lg-6 animate__animated animate__fadeInLeftBig">
+          <form id="texto_index" action="/update" method="post" style="display: none;" onsubmit="return confirm('¿Desea guardar los cambios?');">
+            <textarea id="texto_index" class="text" name="texto_index" cols="65" rows="5">{{presentacion[1]}}</textarea>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-dark">
+              Guardar <i class="fas fa-save"></i>
+              </button>
+              <a class="btn btn-dark" onclick="edit_text()">Cancelar</a>
+            </div>
+          </form>
           <textarea id="texto_oculto" type="text" name="texto_oculto" required placeholder="text" style="display: none;">{{presentacion[1]}}</textarea>
-                <p id="texto_index1" style="text-align:justify;">
-                  <script>
-                    function store() {
-                      var txt = document.getElementById("texto_oculto").value;
-                      if (txt) {
-                      var txttostore = txt.replace(/\n/g, "<br>");
-                      }
-                      console.log(txttostore);
-                      return txttostore;
-                    }
-                    document.write(store("texto_oculto"));
-                  </script>
-                </p>
+          <p id="texto_index1" style="text-align:justify;">
+            <script>
+              function store() {
+                var txt = document.getElementById("texto_oculto").value;
+                if (txt) {
+                var txttostore = txt.replace(/\n/g, "<br>");
+                }
+                console.log(txttostore);
+                return txttostore;
+              }
+              document.write(store("texto_oculto"));
+            </script>
+          </p>
+          <div id="texto_indexbutton" class="col text-center">
+            <button class="btn btn-dark" onclick="edit_text()">Editar Texto  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+              <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+            </svg>
+            </button>
+          </div>
+          <script>
+            function edit_text() {
+              var x = document.getElementById("texto_index");
+              var y = document.getElementById("texto_index1");
+              var z = document.getElementById("texto_indexbutton");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+                z.style.display = "none";
+              } else {
+                x.style.display = "none";
+                y.style.display = "block";
+                z.style.display = "block";
+              }
+            }
+          </script>
         </div><!-- Col end -->
 
         <div class="col-lg-6 mt-5 mt-lg-0">

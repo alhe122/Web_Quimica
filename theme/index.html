@@ -211,7 +211,20 @@
         <div class="row align-items-center">
           <div class="col-md-12 text-center text-md-left">
               <div class="call-to-action-text">
-                <p class="action-title">{{datos_index[1]}}</p>
+                <textarea id="texto_oculto" type="text" name="texto_oculto" required placeholder="text" style="display: none;">{{datos_index[1]}}</textarea>
+                <p id="texto_index1" class="action-title" style="text-align:justify;">
+                  <script>
+                    function store() {
+                      var txt = document.getElementById("texto_oculto").value;
+                      if (txt) {
+                      var txttostore = txt.replace(/\n/g, "<br>");
+                      }
+                      console.log(txttostore);
+                      return txttostore;
+                    }
+                    document.write(store());
+                  </script>
+                </p>
               </div>
           </div><!-- Col end -->
         </div><!-- row end -->
