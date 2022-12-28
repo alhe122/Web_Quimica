@@ -165,8 +165,8 @@ def presentacion_update():
     
     return redirect('/presentacion_edit')
 
-@app.route('/presentacion_upload1', methods=['POST'])
-def presentacion_updateimagen1():
+@app.route('/presentacion_upload/<int:id>', methods=['POST'])
+def presentacion_updateimagen1(id):
     conn=mysql.connect()
     cursor=conn.cursor()
     _imagen=request.files['txtFile']
@@ -174,11 +174,14 @@ def presentacion_updateimagen1():
     if _imagen.filename!='':
         newNameImage=tiempo+_imagen.filename
         _imagen.save("theme/images/"+newNameImage)
-        
-        cursor.execute("SELECT imagen1 from datos_presentacion WHERE id=1")
+        if id==1:
+            cursor.execute("SELECT imagen1 from datos_presentacion WHERE id=1")
+            sql="UPDATE datos_presentacion SET imagen1=%s WHERE id=1;"
+        else:
+            cursor.execute("SELECT imagen2 from datos_presentacion WHERE id=1")
+            sql="UPDATE datos_presentacion SET imagen2=%s WHERE id=1;"
         fila=cursor.fetchall()
         os.remove(os.path.join(app.config['CARPETA'],fila[0][0]))
-        sql="UPDATE datos_presentacion SET imagen1=%s WHERE id=1;"
         datos=(newNameImage)
         
     cursor.execute(sql,datos)
