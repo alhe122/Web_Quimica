@@ -151,6 +151,19 @@ def presentacion_edit():
     
     return render_template('presentacion--edit.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,presentacion=presentacion[0])
 
+@app.route('/presentacion_update', methods=['POST'])
+def presentacion_update():
+
+    _texto=request.form['texto_index']
+    
+    sql="UPDATE datos_presentacion SET texto=%s WHERE id=1;"
+    datos=(_texto)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/presentacion_edit')
 
 @app.route('/mision_vision')
 def misionvision():
