@@ -165,6 +165,27 @@ def presentacion_update():
     
     return redirect('/presentacion_edit')
 
+@app.route('/presentacion_upload1', methods=['POST'])
+def presentacion_updateimagen1():
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    _imagen=request.files['txtFile']
+    tiempo=datetime.now().strftime("%Y%H%M%S")
+    if _imagen.filename!='':
+        newNameImage=tiempo+_imagen.filename
+        _imagen.save("theme/images/"+newNameImage)
+        
+        cursor.execute("SELECT imagen1 from datos_presentacion WHERE id=1")
+        fila=cursor.fetchall()
+        os.remove(os.path.join(app.config['CARPETA'],fila[0][0]))
+        sql="UPDATE datos_presentacion SET imagen1=%s WHERE id=1;"
+        datos=(newNameImage)
+        
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/presentacion_edit')
+
 @app.route('/mision_vision')
 def misionvision():
 

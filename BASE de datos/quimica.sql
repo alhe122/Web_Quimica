@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-12-2022 a las 06:46:09
+-- Tiempo de generación: 28-12-2022 a las 06:10:09
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -182,7 +182,6 @@ INSERT INTO `datos_index` (`id`, `foto`) VALUES
 (1, 'El Ingeniero Químico, tendrá una formación Integral en el campo científico y tecnológico; será capaz de comprender, incorporar, y enriquecer las denominadas tecnologías emergentes y de adaptarse a los campos tecnológicos.\r\nEstará capacitado para: planear, dimensionar, diseñar y simular plantas de procesos; formular, ejecutar y evaluar proyectos industriales; supervisar, administrar y controlar procesos industriales; investigar y desarrollar nuevos procesos; adecuar, modificar y optimizar los existentes; planificar, constituir y gerenciar empresas.'),
 (7, '20221434243dfc4ac50eca195cc2b1a4fd8ac56e05---cone-da-motocicleta-esporte-by-vexels.png'),
 (8, '202215413222788826_1986759444901478_7707950608289885239_n.png'),
-(9, '2022154433banner1.jpg'),
 (10, '2022154754d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png');
 
 -- --------------------------------------------------------
@@ -384,23 +383,17 @@ INSERT INTO `datos_postulantes-ingresantes` (`id`, `año`, `postulantes_ingresan
 
 CREATE TABLE `datos_presentacion` (
   `id` int(11) NOT NULL,
-  `presentacion` text NOT NULL,
-  `Es_titulo` tinyint(1) NOT NULL
+  `texto` text NOT NULL,
+  `imagen1` text NOT NULL,
+  `imagen2` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_presentacion`
 --
 
-INSERT INTO `datos_presentacion` (`id`, `presentacion`, `Es_titulo`) VALUES
-(1, 'Descripción', 1),
-(2, 'El Ingeniero Químico, tendrá una formación Integral en el campo científico y tecnológico; será capaz de comprender, incorporar, y enriquecer las denominadas tecnologías emergentes y de adaptarse a los campos tecnológicos.', 0),
-(3, 'Estará capacitado para: planear, dimensionar, diseñar y simular plantas de procesos; formular, ejecutar y evaluar proyectos industriales; supervisar, administrar y controlar procesos industriales; investigar y desarrollar nuevos procesos; adecuar, modificar y optimizar los existentes; planificar, constituir y gerenciar empresas.', 0),
-(4, 'DURACIÓN, GRADOS Y TÍTULOS', 1),
-(5, 'Tiene una duración de 5 años.\r\nGrado Académico de Bachiller en Ciencias con mención en Ingeniería Química.\r\nTítulo Profesional de Ingeniero Químico.', 0),
-(6, 'CAMPO OCUPACIONAL', 1),
-(7, 'Comprende el amplio sector industrial: Refinación de Petróleo y gas natural, polímeros naturales y sintéticos, cemento cerámica y vidrio. Pinturas, lacas barnices y resinas.', 0),
-(8, 'Fertilizantes y explosivos. Industria no metálica (refractarios, mayólica). Industria textil, industria biotecnológica, (fármacos, proteínas y enzimas) Industria de bebidas (cerveza, gaseosa, vinos). Oleorresinas de páprika y orégano. Productos cárnicos y lácteos, industria del papel, azúcar y colorantes. Industria metalúrgica, concentración, fundición y refinación de minerales no férreos. Industria del acero, hidrometalurgia, recubrimientos electroquímicos, sanidad y seguridad medioambiental (Tecnologías limpias, monitoreo, control y tratamientos de contaminante, sistema de seguridad industrial).', 0);
+INSERT INTO `datos_presentacion` (`id`, `texto`, `imagen1`, `imagen2`) VALUES
+(1, 'DURACIÓN, GRADOS Y TÍTULOS\r\n\r\nTiene una duración de 5 años.\r\nGrado Académico de Bachiller en Ciencias con mención en Ingeniería Química.\r\nTítulo Profesional de Ingeniero Químico.\r\n\r\nCAMPO OCUPACIONAL\r\n\r\nComprende el amplio sector industrial: Refinación de Petróleo y gas natural, polímeros naturales y sintéticos, cemento cerámica y vidrio. Pinturas, lacas barnices y resinas.\r\nFertilizantes y explosivos. Industria no metálica (refractarios, mayólica). Industria textil, industria biotecnológica, (fármacos, proteínas y enzimas) Industria de bebidas (cerveza, gaseosa, vinos). Oleorresinas de páprika y orégano. Productos cárnicos y lácteos, industria del papel, azúcar y colorantes. Industria metalúrgica, concentración, fundición y refinación de minerales no férreos. Industria del acero, hidrometalurgia, recubrimientos electroquímicos, sanidad y seguridad medioambiental (Tecnologías limpias, monitoreo, control y tratamientos de contaminante, sistema de seguridad industrial).', '2022000725banner3.jpg', '2022154433banner1.jpg');
 
 -- --------------------------------------------------------
 
