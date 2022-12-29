@@ -213,6 +213,46 @@ def misionvision():
     mision=misionvision[0],vision=misionvision[1]
     )
 
+@app.route('/mision_vision_edit')
+def misionvision_edit():
+
+    sql="SELECT * FROM `datoscontacto` WHERE `id` = 1"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    datos_generales=cursor.fetchall()
+    sql="SELECT * FROM `redes_sociales`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    redes_sociales=cursor.fetchall()
+    sql="SELECT * FROM `datos_misionvision`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    misionvision=cursor.fetchall()
+    conn.commit()
+    
+    return render_template('mision_vision--edit.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
+    mision=misionvision[0],vision=misionvision[1]
+    )
+
+@app.route('/mision_vision_update/<int:id>', methods=['POST'])
+def misionvision_update(id):
+    if id==1:
+        _texto=request.form['texto_index1']
+        sql="UPDATE datos_misionvision SET mision_vision=%s WHERE id=1;"
+    else:
+        _texto=request.form['texto_index2']
+        sql="UPDATE datos_misionvision SET mision_vision=%s WHERE id=2;"
+    datos=(_texto)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/mision_vision_edit')
+
 @app.route('/objetivos')
 def objetivos():
 
