@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2022 a las 06:10:09
+-- Tiempo de generación: 03-01-2023 a las 06:56:45
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -61,7 +61,9 @@ CREATE TABLE `datos_autoridades` (
 
 INSERT INTO `datos_autoridades` (`id`, `cargo`, `nombre`) VALUES
 (1, 'DECANO DE LA FACULTAD DE INGENIERÍA', 'Dr. Jesús Plácido Medina Salas'),
-(2, 'Cargo 2', 'Nombre 2');
+(3, 'autoridad 2', 'nombre'),
+(4, 'autoridad 3', 'nombre'),
+(5, 'autoridad 4', 'nombre');
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,7 @@ INSERT INTO `datos_autoridades` (`id`, `cargo`, `nombre`) VALUES
 
 CREATE TABLE `datos_comites` (
   `id` int(11) NOT NULL,
-  `link_resolucion` text NOT NULL,
+  `link` text NOT NULL,
   `texto_boton` text NOT NULL DEFAULT 'Resolución'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,7 +81,7 @@ CREATE TABLE `datos_comites` (
 -- Volcado de datos para la tabla `datos_comites`
 --
 
-INSERT INTO `datos_comites` (`id`, `link_resolucion`, `texto_boton`) VALUES
+INSERT INTO `datos_comites` (`id`, `link`, `texto_boton`) VALUES
 (1, 'https://drive.google.com/file/d/1sJQMym_iECMRvqIQRHqdkwJJdIM6XG3Q/view', 'Resolución');
 
 -- --------------------------------------------------------
@@ -142,7 +144,7 @@ CREATE TABLE `datos_historica` (
 --
 
 INSERT INTO `datos_historica` (`id`, `texto`) VALUES
-(1, 'Hola Mundo');
+(1, 'Texto de ejemplo\r\nTexto de ejemplo\r\nTexto de ejemplo');
 
 -- --------------------------------------------------------
 
@@ -152,7 +154,7 @@ INSERT INTO `datos_historica` (`id`, `texto`) VALUES
 
 CREATE TABLE `datos_horarios` (
   `id` int(11) NOT NULL,
-  `texto` text NOT NULL,
+  `texto_boton` text NOT NULL,
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -160,7 +162,7 @@ CREATE TABLE `datos_horarios` (
 -- Volcado de datos para la tabla `datos_horarios`
 --
 
-INSERT INTO `datos_horarios` (`id`, `texto`, `link`) VALUES
+INSERT INTO `datos_horarios` (`id`, `texto_boton`, `link`) VALUES
 (1, 'SEMESTRE 2022-II', 'https://www.facebook.com/ESIQUNJBG/posts/pfbid0DAzWJkLRVZCBLW6Ea887yqaJ2yis6JW6nzo9VSi8CCmphHC9WBCETjGpFDGkB8FLl?__cft__[0]=AZV5aNweM0xCb_LXn9BPvPYZEOFu7XodMvbcrLa4kUpBFeZltMYkWCFzP-41leSSHj61Y6MNmKPon2xHwjc_1iQMcXekiZXqNHLfwtFQu1qxkoJas9Gk4cZQjp8Db-bIClvfLkjmxdlRnzOPAUhTg3ThtAX8sA3oBFXmuXWP-45xCquSxKp7WjNygwXjWyrg64oWliDdi3S_q8oNsYRCkZIe&__tn__=%2CO%2CP-R');
 
 -- --------------------------------------------------------
@@ -180,8 +182,6 @@ CREATE TABLE `datos_index` (
 
 INSERT INTO `datos_index` (`id`, `foto`) VALUES
 (1, 'El Ingeniero Químico, tendrá una formación Integral en el campo científico y tecnológico; será capaz de comprender, incorporar, y enriquecer las denominadas tecnologías emergentes y de adaptarse a los campos tecnológicos.\r\nEstará capacitado para: planear, dimensionar, diseñar y simular plantas de procesos; formular, ejecutar y evaluar proyectos industriales; supervisar, administrar y controlar procesos industriales; investigar y desarrollar nuevos procesos; adecuar, modificar y optimizar los existentes; planificar, constituir y gerenciar empresas.'),
-(7, '20221434243dfc4ac50eca195cc2b1a4fd8ac56e05---cone-da-motocicleta-esporte-by-vexels.png'),
-(8, '202215413222788826_1986759444901478_7707950608289885239_n.png'),
 (10, '2022154754d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png');
 
 -- --------------------------------------------------------
@@ -215,15 +215,17 @@ INSERT INTO `datos_lineas-inv` (`id`, `titulo`, `texto`, `link`, `texto_boton`) 
 CREATE TABLE `datos_malla` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL,
-  `link` text NOT NULL
+  `link` text NOT NULL,
+  `texto_boton` text NOT NULL,
+  `imagen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_malla`
 --
 
-INSERT INTO `datos_malla` (`id`, `texto`, `link`) VALUES
-(1, 'MALLA CURRICULAR DE LA E.P. DE INGENIERÍA QUÍMICA 2018', '');
+INSERT INTO `datos_malla` (`id`, `texto`, `link`, `texto_boton`, `imagen`) VALUES
+(1, 'MALLA CURRICULAR DE LA E.P. DE INGENIERÍA QUÍMICA 2018', '', 'Malla Curricular', '20231830082022180446d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png');
 
 -- --------------------------------------------------------
 
@@ -253,16 +255,34 @@ INSERT INTO `datos_misionvision` (`id`, `mision_vision`) VALUES
 CREATE TABLE `datos_objetivos` (
   `id` int(11) NOT NULL,
   `texto` text NOT NULL,
-  `es_titulo` int(11) NOT NULL
+  `imagen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_objetivos`
 --
 
-INSERT INTO `datos_objetivos` (`id`, `texto`, `es_titulo`) VALUES
-(1, 'OBJETIVOS', 1),
-(2, 'Hola\r\nXD', 0);
+INSERT INTO `datos_objetivos` (`id`, `texto`, `imagen`) VALUES
+(1, '- Objetivo 1\r\n- Objetivo 2\r\n- Objetivo 3', '2022181107d41ae5b0-aa4b-4fd1-b53b-f7b1b155df771.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_organizacion`
+--
+
+CREATE TABLE `datos_organizacion` (
+  `id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `imagen` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `datos_organizacion`
+--
+
+INSERT INTO `datos_organizacion` (`id`, `texto`, `imagen`) VALUES
+(1, 'Organigrama de la Escuela Profesional de Ingeniería Química', '20232328272023232548parallax1.jpg');
 
 -- --------------------------------------------------------
 
@@ -313,17 +333,17 @@ INSERT INTO `datos_personal-docente` (`id`, `link`, `texto_boton`) VALUES
 
 CREATE TABLE `datos_plan-estudios` (
   `id` int(11) NOT NULL,
-  `texto` text NOT NULL,
-  `link` text NOT NULL
+  `link` text NOT NULL,
+  `texto_boton` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_plan-estudios`
 --
 
-INSERT INTO `datos_plan-estudios` (`id`, `texto`, `link`) VALUES
-(1, 'Plan de estudios F1-2014', ''),
-(2, 'Plan de estudios F2-2018', '');
+INSERT INTO `datos_plan-estudios` (`id`, `link`, `texto_boton`) VALUES
+(1, '', 'Plan de estudios F1-2014'),
+(2, '', 'Plan de estudios F2-2018');
 
 -- --------------------------------------------------------
 
@@ -393,7 +413,7 @@ CREATE TABLE `datos_presentacion` (
 --
 
 INSERT INTO `datos_presentacion` (`id`, `texto`, `imagen1`, `imagen2`) VALUES
-(1, 'DURACIÓN, GRADOS Y TÍTULOS\r\n\r\nTiene una duración de 5 años.\r\nGrado Académico de Bachiller en Ciencias con mención en Ingeniería Química.\r\nTítulo Profesional de Ingeniero Químico.\r\n\r\nCAMPO OCUPACIONAL\r\n\r\nComprende el amplio sector industrial: Refinación de Petróleo y gas natural, polímeros naturales y sintéticos, cemento cerámica y vidrio. Pinturas, lacas barnices y resinas.\r\nFertilizantes y explosivos. Industria no metálica (refractarios, mayólica). Industria textil, industria biotecnológica, (fármacos, proteínas y enzimas) Industria de bebidas (cerveza, gaseosa, vinos). Oleorresinas de páprika y orégano. Productos cárnicos y lácteos, industria del papel, azúcar y colorantes. Industria metalúrgica, concentración, fundición y refinación de minerales no férreos. Industria del acero, hidrometalurgia, recubrimientos electroquímicos, sanidad y seguridad medioambiental (Tecnologías limpias, monitoreo, control y tratamientos de contaminante, sistema de seguridad industrial).', '2022000725banner3.jpg', '2022154433banner1.jpg');
+(1, 'DURACIÓN, GRADOS Y TÍTULOS\r\n\r\nTiene una duración de 5 años.\r\nGrado Académico de Bachiller en Ciencias con mención en Ingeniería Química.\r\nTítulo Profesional de Ingeniero Químico.\r\n\r\nCAMPO OCUPACIONAL\r\n\r\nComprende el amplio sector industrial: Refinación de Petróleo y gas natural, polímeros naturales y sintéticos, cemento cerámica y vidrio. Pinturas, lacas barnices y resinas.\r\nFertilizantes y explosivos. Industria no metálica (refractarios, mayólica). Industria textil, industria biotecnológica, (fármacos, proteínas y enzimas) Industria de bebidas (cerveza, gaseosa, vinos). Oleorresinas de páprika y orégano. Productos cárnicos y lácteos, industria del papel, azúcar y colorantes. Industria metalúrgica, concentración, fundición y refinación de minerales no férreos. Industria del acero, hidrometalurgia, recubrimientos electroquímicos, sanidad y seguridad medioambiental (Tecnologías limpias, monitoreo, control y tratamientos de contaminante, sistema de seguridad industrial).', '2022172843banner1.jpg', '2022172909logo-sm.png');
 
 -- --------------------------------------------------------
 
@@ -524,7 +544,7 @@ INSERT INTO `datos_tramites` (`id`, `link`, `boton_texto`) VALUES
 
 CREATE TABLE `datos_tutorias` (
   `id` int(11) NOT NULL,
-  `texto` text NOT NULL,
+  `texto_boton` text NOT NULL,
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -532,8 +552,8 @@ CREATE TABLE `datos_tutorias` (
 -- Volcado de datos para la tabla `datos_tutorias`
 --
 
-INSERT INTO `datos_tutorias` (`id`, `texto`, `link`) VALUES
-(1, 'RESOLUCIÓN DE FACULTAD N°0000000', '');
+INSERT INTO `datos_tutorias` (`id`, `texto_boton`, `link`) VALUES
+(1, 'RESOLUCIÓN DE FACULTAD N°0000001', '');
 
 -- --------------------------------------------------------
 
@@ -629,6 +649,12 @@ ALTER TABLE `datos_misionvision`
 -- Indices de la tabla `datos_objetivos`
 --
 ALTER TABLE `datos_objetivos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `datos_organizacion`
+--
+ALTER TABLE `datos_organizacion`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -729,13 +755,13 @@ ALTER TABLE `datoscontacto`
 -- AUTO_INCREMENT de la tabla `datos_autoridades`
 --
 ALTER TABLE `datos_autoridades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_comites`
 --
 ALTER TABLE `datos_comites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_estudiantes-egresados`
@@ -792,6 +818,12 @@ ALTER TABLE `datos_objetivos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `datos_organizacion`
+--
+ALTER TABLE `datos_organizacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `datos_personal-administrativo`
 --
 ALTER TABLE `datos_personal-administrativo`
@@ -807,7 +839,7 @@ ALTER TABLE `datos_personal-docente`
 -- AUTO_INCREMENT de la tabla `datos_plan-estudios`
 --
 ALTER TABLE `datos_plan-estudios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_planes`
@@ -867,7 +899,7 @@ ALTER TABLE `datos_tramites`
 -- AUTO_INCREMENT de la tabla `datos_tutorias`
 --
 ALTER TABLE `datos_tutorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `redes_sociales`

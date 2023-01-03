@@ -202,9 +202,20 @@
         <h3 class="column-title">Reseña Historica</h3>
       </div>
       <div class="col-lg-10 animate__animated animate__fadeInLeftBig">
-        {%for historica1 in historica%}
-          <p style="text-align:justify;">{{historica1[1]}}</p>
-        {% endfor %}
+        <textarea id="texto_oculto" type="text" name="texto_oculto" required placeholder="text" style="display: none;">{{historica[1]}}</textarea>
+        <p id="texto_index1" style="text-align:justify;">
+          <script>
+            function store() {
+              var txt = document.getElementById("texto_oculto").value;
+              if (txt) {
+              var txttostore = txt.replace(/\n/g, "<br>");
+              }
+              console.log(txttostore);
+              return txttostore;
+            }
+            document.write(store("texto_oculto"));
+          </script>
+        </p>
       </div>
     </div><!-- Content row end -->
 
