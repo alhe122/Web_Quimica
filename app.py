@@ -870,7 +870,59 @@ def lineas():
     conn.commit()
     
     return render_template('lineas.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
-    lineas=lineas) 
+    lineas=lineas)
+
+@app.route('/lineas_investigacion_edit')
+def lineas_edit():
+
+    sql="SELECT * FROM `datos_lineas-inv`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    lineas=cursor.fetchall()
+
+    conn.commit()
+    
+    return render_template('lineas--edit.html',lineas=lineas) 
+
+@app.route('/lineas_investigacion_update/<int:id>', methods=['POST'])
+def lineas_investigacion_update(id):
+
+    _texto1=request.form[str(id)+'txt1']
+    _texto2=request.form[str(id)+'txt2']
+    _texto3=request.form[str(id)+'txt3']
+    _texto4=request.form[str(id)+'txt4']
+    sql="UPDATE `datos_lineas-inv` SET `titulo` = %s,`texto` = %s,`link` = %s,`texto_boton`= %s  WHERE id=%s;"
+    datos=(_texto1,_texto2,_texto3,_texto4,id)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/lineas_investigacion_edit') 
+
+@app.route('/lineas_investigacion_delete/<int:id>')
+def lineas_investigacion_delete(id):
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute("DELETE FROM `datos_lineas-inv` WHERE id=%s",(id))
+    conn.commit()
+    return redirect('/lineas_investigacion_edit')
+
+@app.route('/lineas_investigacion_insert', methods=['POST'])
+def lineas_investigacion_insert():
+    _texto1=request.form['txt1']
+    _texto2=request.form['txt2']
+    _texto3=request.form['txt3']
+    _texto4=request.form['txt4']
+    sql="INSERT INTO `datos_lineas-inv` (`id`, `titulo`,`texto`,`link`,`texto_boton`) VALUES (NULL,%s,%s, %s, %s);"
+    datos=(_texto1,_texto2,_texto3,_texto4)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/lineas_investigacion_edit') 
 
 @app.route('/proyectos_investigacion')
 def proyectos():
