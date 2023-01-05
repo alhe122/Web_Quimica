@@ -948,6 +948,19 @@ def proyectos():
     return render_template('proyectos.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,
     proyectos=proyectos)
 
+@app.route('/proyectos_investigacion_edit')
+def proyectos_edit():
+
+    sql="SELECT * FROM `datos_proyectos-inv`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    proyectos=cursor.fetchall()
+
+    conn.commit()
+    
+    return render_template('proyectos--edit.html',proyectos=proyectos)
+
 @app.route('/repositorio')
 def repositorio():
 
