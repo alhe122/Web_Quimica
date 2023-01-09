@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-01-2023 a las 06:56:45
+-- Tiempo de generación: 09-01-2023 a las 06:11:23
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -163,7 +163,7 @@ CREATE TABLE `datos_horarios` (
 --
 
 INSERT INTO `datos_horarios` (`id`, `texto_boton`, `link`) VALUES
-(1, 'SEMESTRE 2022-II', 'https://www.facebook.com/ESIQUNJBG/posts/pfbid0DAzWJkLRVZCBLW6Ea887yqaJ2yis6JW6nzo9VSi8CCmphHC9WBCETjGpFDGkB8FLl?__cft__[0]=AZV5aNweM0xCb_LXn9BPvPYZEOFu7XodMvbcrLa4kUpBFeZltMYkWCFzP-41leSSHj61Y6MNmKPon2xHwjc_1iQMcXekiZXqNHLfwtFQu1qxkoJas9Gk4cZQjp8Db-bIClvfLkjmxdlRnzOPAUhTg3ThtAX8sA3oBFXmuXWP-45xCquSxKp7WjNygwXjWyrg64oWliDdi3S_q8oNsYRCkZIe&__tn__=%2CO%2CP-R');
+(1, 'https://www.facebook.com/ESIQUNJBG/posts/pfbid02H5BopF7eXodVCkd1KyvhzaGwPE8SRQwHecGJHZ4ZXjgdpdpKnHX6afSoxoTMFYCul', 'Horario');
 
 -- --------------------------------------------------------
 
@@ -575,6 +575,25 @@ CREATE TABLE `redes_sociales` (
 INSERT INTO `redes_sociales` (`id`, `nombre_red`, `link`, `icono_bootstrap`) VALUES
 (1, 'Facebook', 'https://es-la.facebook.com/ESIQUNJBG/', 'facebook-f');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` char(102) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'pbkdf2:sha256:260000$YLoK7eglLcpfp9I6$9f7badf5482358cac756a9633e95fe83396a1431da8c3cdc195be4a01a2e190a');
+
 --
 -- Índices para tablas volcadas
 --
@@ -742,6 +761,12 @@ ALTER TABLE `redes_sociales`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -869,7 +894,7 @@ ALTER TABLE `datos_protocolos`
 -- AUTO_INCREMENT de la tabla `datos_proyectos-inv`
 --
 ALTER TABLE `datos_proyectos-inv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_reglamento`
@@ -887,7 +912,7 @@ ALTER TABLE `datos_repositorio-tesis`
 -- AUTO_INCREMENT de la tabla `datos_seguridad`
 --
 ALTER TABLE `datos_seguridad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_tramites`
@@ -905,6 +930,12 @@ ALTER TABLE `datos_tutorias`
 -- AUTO_INCREMENT de la tabla `redes_sociales`
 --
 ALTER TABLE `redes_sociales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 

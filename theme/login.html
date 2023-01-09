@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Ingeniería Química</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Ingeniería Química">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name=author content="Ingeniería Química">
+  <meta name=generator content="Ingeniería Química">
+
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='images/logo-sm.png')}}">
+
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/bootstrap/bootstrap.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/fontawesome/css/all.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/animate-css/animate.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/slick/slick.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/slick/slick-theme.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='plugins/colorbox/colorbox.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+
+</head>
+<body class="text-center" background="{{url_for('static', filename='images/Tacna-1.jpg')}}">
+<div class="container">
+  <br>
+  <br>
+  <div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <form class="form-signin" action="/login" method="post">
+      <img class="mb-4" src="{{url_for('static', filename='images/logo-sm.png')}}" alt="" width="40%" height="40%">
+      {% with messages = get_flashed_messages() %}
+
+      {% if messages %}
+      <br />
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>{{ message }}</strong>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      {% endwith %}
+      <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+      <label for="inputEmail" class="sr-only">Usuario</label>
+      <input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required autofocus>
+      <label for="inputPassword" class="sr-only">Contraseña</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+      <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Recordar
+      </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+      <p class="mt-5 mb-3 text-muted">Tacna-Perú &copy; <script>
+        document.write(new Date().getFullYear())
+      </script></p>
+    </form>
+  </div>
+  </div>
+</div>
+
+</body>
+
+  </html>

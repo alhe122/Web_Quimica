@@ -1,8 +1,14 @@
+from config import config
 from flask import Flask
-from flask import render_template,request, redirect
+from flask import render_template,request, redirect,url_for,flash
 from flaskext.mysql import MySQL
+from flask_mysqldb import MySQL as MySQL2
 from datetime import datetime
 import os
+
+from models.ModelUser import ModelUser
+
+from models.entities.User import User
 
 app =Flask(__name__,template_folder='theme',static_folder='theme',)
 
@@ -12,9 +18,29 @@ app.config['MYSQL_DATABASE_USER']='root'
 app.config['MYSQL_DATABASE_PASSWORD']=''
 app.config['MYSQL_DATABASE_DB']='quimica'
 mysql.init_app(app)
+db = MySQL2(app)
 
 CARPETA=os.path.join('theme/images')
 app.config['CARPETA']=CARPETA
+
+@app.route('/login',methods=['GET','POST'])
+def login():
+    if request.method=='POST':
+        user = User(0,request.form['username'],request.form['password'])
+        logged_user=ModelUser.login(db,user)
+        if logged_user != None:
+            if logged_user.password:
+                #login_user(logged_user)
+                return redirect(url_for('index_edit'))
+            else:
+                flash("Cantraseña Incorrecta...")
+                return render_template('login.html')
+        else:
+            flash("Usuario no Encontrado...")
+            return render_template('login.html')
+    else:        
+        return render_template('login.html')
+
 
 @app.route('/')
 def index():
@@ -961,6 +987,43 @@ def proyectos_edit():
     
     return render_template('proyectos--edit.html',proyectos=proyectos)
 
+@app.route('/proyectos_investigacion_update/<int:id>', methods=['POST'])
+def proyectos_investigacion_update(id):
+
+    _texto1=request.form[str(id)+'txt1']
+    _texto2=request.form[str(id)+'txt2']
+    _texto3=request.form[str(id)+'txt3']
+    sql="UPDATE `datos_proyectos-inv` SET `titulo` = %s,`link` = %s,`texto_boton`= %s  WHERE id=%s;"
+    datos=(_texto1,_texto2,_texto3,id)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/proyectos_investigacion_edit') 
+
+@app.route('/proyectos_investigacion_delete/<int:id>')
+def proyectos_investigacion_delete(id):
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute("DELETE FROM `datos_proyectos-inv` WHERE id=%s",(id))
+    conn.commit()
+    return redirect('/proyectos_investigacion_edit')
+
+@app.route('/proyectos_investigacion_insert', methods=['POST'])
+def proyectos_investigacion_insert():
+    _texto1=request.form['txt1']
+    _texto2=request.form['txt2']
+    _texto3=request.form['txt3']
+    sql="INSERT INTO `datos_proyectos-inv` (`id`, `titulo`,`link`,`texto_boton`) VALUES (NULL,%s, %s, %s);"
+    datos=(_texto1,_texto2,_texto3)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/proyectos_investigacion_edit') 
+
 @app.route('/repositorio')
 def repositorio():
 
@@ -983,6 +1046,33 @@ def repositorio():
     conn.commit()
     
     return render_template('repositorio_tesis.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,repositorio=repositorio[0])  
+
+@app.route('/repositorio_edit')
+def repositorio_edit():
+
+    sql="SELECT * FROM `datos_repositorio-tesis`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    repositorio=cursor.fetchall()
+
+    conn.commit()
+    
+    return render_template('repositorio_tesis--edit.html',repositorio=repositorio[0])  
+
+@app.route('/repositorio_update', methods=['POST'])
+def repositorio_update():
+
+    _texto1=request.form['txtBoton1']
+    _texto2=request.form['txtBoton2']
+    sql="UPDATE `datos_repositorio-tesis` SET `link` = %s, `texto_boton`=%s WHERE id=1;"
+    datos=(_texto2,_texto1)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/repositorio_edit') 
 
 @app.route('/reglamento')
 def reglamentos_escuela():
@@ -1007,6 +1097,33 @@ def reglamentos_escuela():
     
     return render_template('reglamento.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,reglamento=reglamento[0]) 
 
+@app.route('/reglamento_edit')
+def reglamentos_escuela_edit():
+
+    sql="SELECT * FROM `datos_reglamento`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    reglamento=cursor.fetchall()
+
+    conn.commit()
+    
+    return render_template('reglamento--edit.html',reglamento=reglamento[0]) 
+
+@app.route('/reglamento_update', methods=['POST'])
+def reglamento_update():
+
+    _texto1=request.form['txtBoton1']
+    _texto2=request.form['txtBoton2']
+    sql="UPDATE `datos_reglamento` SET `link` = %s, `texto_boton`=%s WHERE id=1;"
+    datos=(_texto2,_texto1)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/reglamento_edit') 
+
 @app.route('/seguridad')
 def seguridad():
 
@@ -1029,6 +1146,57 @@ def seguridad():
     conn.commit()
     
     return render_template('seguridad.html',datos_generales=datos_generales[0],redes_sociales=redes_sociales,seguridad=seguridad)
+
+@app.route('/seguridad_edit')
+def seguridad_edit():
+
+    sql="SELECT * FROM `datos_seguridad`"
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    seguridad=cursor.fetchall()
+
+    conn.commit()
+    
+    return render_template('seguridad--edit.html',seguridad=seguridad)
+
+@app.route('/seguridad_update/<int:id>', methods=['POST'])
+def seguridad_update(id):
+
+    _texto1=request.form[str(id)+'txt1']
+    _texto2=request.form[str(id)+'txt2']
+    _texto3=request.form[str(id)+'txt3']
+    sql="UPDATE `datos_seguridad` SET `titulo` = %s,`link` = %s,`texto_boton`= %s  WHERE id=%s;"
+    datos=(_texto1,_texto2,_texto3,id)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/seguridad_edit') 
+
+@app.route('/seguridad_delete/<int:id>')
+def seguridad_delete(id):
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute("DELETE FROM `datos_seguridad` WHERE id=%s",(id))
+    conn.commit()
+    return redirect('/seguridad_edit')
+
+@app.route('/seguridad_insert', methods=['POST'])
+def seguridad_insert():
+    _texto1=request.form['txt1']
+    _texto2=request.form['txt2']
+    _texto3=request.form['txt3']
+    sql="INSERT INTO `datos_seguridad` (`id`, `titulo`,`link`,`texto_boton`) VALUES (NULL,%s, %s, %s);"
+    datos=(_texto1,_texto2,_texto3)
+    conn=mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute(sql,datos)
+    conn.commit()
+    
+    return redirect('/seguridad_edit') 
+
 
 @app.route('/protocolos')
 def protocolos():
@@ -1268,4 +1436,5 @@ def tramites():
     return render_template('tramites.html',datos_generales=datos_generales[0],tramites_texto=tramites[0],tramites=tramites[1:]) 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.config.from_object(config['development'])
+    app.run()
